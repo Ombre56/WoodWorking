@@ -1,8 +1,12 @@
 import React from 'react'
+
 import styled from 'styled-components';
 import Image from 'next/image'
 import image from '../../assests/images/Logo.png';
+import NavigationLines from '../../assests/images/Navigation.png';
+
 import { BsInstagram, BsFacebook } from 'react-icons/bs';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 const HeaderBg = styled.div`
 width: 100%;
@@ -11,6 +15,9 @@ width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
+  position: fixed;
+	top: 0;
+  z-index: 10;
 `;
 
 const LeftSide = styled.div`
@@ -21,8 +28,8 @@ const Images = styled.div`
   width: 100%;
   height: 100%;
   text-align: center;
+  color: #FFFFFF;
     a{
-      color: #FFFFFF;
       padding: 0 .625rem;
     }
 `;
@@ -51,10 +58,13 @@ export const Header = () => {
         </Images>
       </LeftSide>
       <Center>
-        <Image src={image} alt='sss' width='103' height='76' />
+        <Image src={image} alt='Logo' width='103' height='76' />
       </Center>
       <RightSide>
-        sad
+        <Images className='left-images'>
+          <AiOutlineShoppingCart />
+          <Image src={NavigationLines} alt='Navigation' width='19' height='7' />
+        </Images>
       </RightSide>
     </HeaderBg>
   )
