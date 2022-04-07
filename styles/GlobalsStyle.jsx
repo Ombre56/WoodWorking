@@ -9,6 +9,11 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+@font-face {
+	font-family: Righteous;
+	src: url('../assests/fonts/Righteous-Regular.ttf');
+}
+
 a {
   color: inherit;
   text-decoration: none;
