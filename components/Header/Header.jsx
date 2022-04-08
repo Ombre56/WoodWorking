@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import Image from 'next/image'
 
-import image from '../../assests/images/Logo.png';
-import NavigationLines from '../../assests/images/Navigation.png';
+import image from '../../assets/images/Logo.png';
+import NavigationLines from '../../assets/images/Navigation.png';
 
 import { BsInstagram, BsFacebook } from 'react-icons/bs';
 import { AiOutlineShoppingCart } from 'react-icons/ai';

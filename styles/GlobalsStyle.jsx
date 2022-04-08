@@ -11,7 +11,7 @@ body {
 
 @font-face {
 	font-family: Righteous;
-	src: url('../assests/fonts/Righteous-Regular.ttf');
+	src: url('../asset/fonts/Righteous-Regular.ttf');
 }
 
 a {
