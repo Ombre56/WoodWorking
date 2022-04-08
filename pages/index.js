@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import AboutUs from '../sections/AboutUs';
 import Hero from '../sections/Hero';
 
 export default function Home() {
@@ -12,6 +13,9 @@ export default function Home() {
       <main>
         <section>
           <Hero />
+        </section>
+        <section>
+          <AboutUs />
         </section>
       </main>
       <footer>
