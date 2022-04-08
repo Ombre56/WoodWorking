@@ -4,28 +4,28 @@ import styled from 'styled-components';
 export default function HeroBanner() {
   return (
     <>
-        <BannerVideo
-          autoPlay
-          loop
-          muted
-          disablePictureInPicture
+      <BannerVideo
+        autoPlay
+        loop
+        muted
+        disablePictureInPicture
         >
-          <source src="/video/HeroBackground.mp4" type="video/mp4" />
+        <source src={require('../../assets/video/HeroBackground.mp4')} type="video/mp4" />
       </BannerVideo>
-      <BannerText>
-        <Title>
+      <HeroTextContainer>
+        <HeroTitle>
           STOLARZ
-        </Title>
-        <SubTitle>
-            Ręczne wykonie | Jakość | Kreatywność
-        </SubTitle>
-      </BannerText>
+        </HeroTitle>
+        <HeroSubTitle>
+            Ręczne wykonanie | Jakość | Kreatywność
+        </HeroSubTitle>
+      </HeroTextContainer>
     </>
   );
 };
 
 const BannerVideo = styled.video`
-  position: absolute;
+  position: relative;
   z-index: -1;
   top: 0;
   left: 0;
@@ -34,20 +34,27 @@ const BannerVideo = styled.video`
   object-fit: cover;
 `;
 
-const BannerText = styled.section`
-  padding-top: 30vh;
-  margin-left: auto;
-  margin-right: auto;
+const HeroTextContainer = styled.section`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  margin: auto;
   text-align: center;
   color: #FFFFFF;
 `;
 
-const Title = styled.p`
+const HeroTitle = styled.h1`
+  font-family: 'Roboto';
+  font-weight: 400;
   font-size: 6rem;
-  /* line-height: 7.0313rem; */
+  line-height: 7rem;
+  margin: 0;
 `;
 
-const SubTitle = styled.p`
+const HeroSubTitle = styled.p`
+  font-family: 'Roboto';
+  font-weight: 400;
   font-size: 2.25rem;
-  line-height: 2.6369rem;
+  line-height: 1.625rem;
 `;
