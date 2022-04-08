@@ -14,7 +14,7 @@ export default function Hero() {
 }
 
 const HeroSection = styled.section`
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
-  background: linear-gradient(0deg, rgba(62, 62, 62, 0.46), rgba(62, 62, 62, 0.46));
+  background: linear-gradient(0deg, rgba(62, 62, 62, 0.78), rgba(62, 62, 62, 0.78));
 `;
