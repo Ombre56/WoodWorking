@@ -10,7 +10,7 @@ export default function HeroBanner() {
         muted
         disablePictureInPicture
         >
-        <source src={require('../../assets/video/HeroBackground.mp4')} type="video/mp4" />
+        <source src='/assets/video/HeroBackground.mp4' type="video/mp4" />
       </BannerVideo>
       <HeroTextContainer>
         <HeroTitle>
@@ -27,8 +27,6 @@ export default function HeroBanner() {
 const BannerVideo = styled.video`
   position: relative;
   z-index: -1;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100vh;
   object-fit: cover;

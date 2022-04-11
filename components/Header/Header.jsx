@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import Image from 'next/image'
 
-import image from '../../assets/images/Logo.png';
-import NavigationLines from '../../assets/images/Navigation.png';
-
 import { BsInstagram, BsFacebook } from 'react-icons/bs';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
@@ -21,13 +18,13 @@ export default function Header() {
         </InstagramAndFb>
       </LeftSide>
       <Center>
-        <Image src={image} alt='Logo' width='103' height='76' />
+        <Image src='/assets/images/Logo.png' alt='Logo' width='103' height='76' />
       </Center>
       <RightSide>
         <ShopAndNav>
           <AiOutlineShoppingCart className='shoppingCart' />
           <NavigationImg>
-            <Image src={NavigationLines} alt='Navigation' width={22} height={12} />
+            <Image src='/assets/images/Navigation.png' alt='Navigation' width={22} height={12} />
           </NavigationImg>
         </ShopAndNav>
       </RightSide>
