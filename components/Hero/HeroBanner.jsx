@@ -30,6 +30,11 @@ const BannerVideo = styled.video`
   width: 100%;
   height: 100vh;
   object-fit: cover;
+    @media screen and (max-width: 800px){
+        background-image: url('/assets/images/Background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 `;
 
 const HeroTextContainer = styled.section`
@@ -48,6 +53,10 @@ const HeroTitle = styled.h1`
   font-size: 6rem;
   line-height: 7rem;
   margin: 0;
+    @media screen and (max-width: 800px){
+        font-size: 3.125rem;
+        line-height: 3rem;
+    }
 `;
 
 const HeroSubTitle = styled.p`
@@ -55,4 +64,8 @@ const HeroSubTitle = styled.p`
   font-weight: 400;
   font-size: 2.25rem;
   line-height: 1.625rem;
+      @media screen and (max-width: 800px){
+          font-size: .9375rem;
+          line-height: 1.125rem;
+    }
 `;
