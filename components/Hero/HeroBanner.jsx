@@ -1,17 +1,21 @@
 import React from 'react'
+import Image from 'next/image'
 import styled from 'styled-components';
 
 export default function HeroBanner() {
   return (
     <>
-      <BannerVideo
+      {/* <BannerVideo
         autoPlay
         loop
         muted
         disablePictureInPicture
         >
         <source src='/assets/video/HeroBackground.mp4' type="video/mp4" />
-      </BannerVideo>
+      </BannerVideo> */}
+      <BannerImage >
+        <Image src="/assets/images/Background.jpg" alt='HeroBackgroundImage' layout='fill' objectFit='cover' objectPosition='center'/>
+      </BannerImage>
       <HeroTextContainer>
         <HeroTitle>
           STOLARZ
@@ -24,18 +28,12 @@ export default function HeroBanner() {
   );
 };
 
-const BannerVideo = styled.video`
+const BannerImage = styled.div`
   position: relative;
   z-index: -1;
   width: 100%;
   height: 100vh;
-  object-fit: cover;
-    @media screen and (max-width: 800px){
-        background-image: url('/assets/images/Background.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-`;
+  `;
 
 const HeroTextContainer = styled.section`
   position: absolute;
