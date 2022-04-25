@@ -51,6 +51,14 @@ a {
     background-color: #C4C4C4;
 }
 
+.rec.rec-arrow-left {
+    padding-left: 3rem;
+}
+
+.rec.rec-arrow-right {
+    padding-right: 3rem;
+}
+
 .rec.rec-dot_active{
   background-color: #6B6B6B;
   box-shadow: 0 0 1px 3px #6B6B6B;
