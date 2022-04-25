@@ -27,4 +27,7 @@ const Title = styled.h2`
   color: #F17900;
   padding-top: 5rem;
   margin: 0;
+      @media screen and (max-width: 800px){
+          font-size: 3rem;
+    }
 `;
