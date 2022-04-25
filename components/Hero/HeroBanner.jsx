@@ -5,14 +5,6 @@ import styled from 'styled-components';
 export default function HeroBanner() {
   return (
     <>
-      {/* <BannerVideo
-        autoPlay
-        loop
-        muted
-        disablePictureInPicture
-        >
-        <source src='/assets/video/HeroBackground.mp4' type="video/mp4" />
-      </BannerVideo> */}
       <BannerImage >
         <Image src="/assets/images/Background.jpg" alt='HeroBackgroundImage' layout='fill' objectFit='cover' objectPosition='center'/>
       </BannerImage>
