@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import AboutUs from '../sections/AboutUs';
 import Hero from '../sections/Hero';
+import Specialization from '../sections/Specialization';
 
 export default function Home() {
   let [loading, setLoading] = useState(false);
@@ -35,6 +36,7 @@ export default function Home() {
             <>
               <Hero />
               <AboutUs />
+              <Specialization />
             </>
         }
       </main>
