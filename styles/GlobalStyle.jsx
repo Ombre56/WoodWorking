@@ -48,15 +48,15 @@ a {
 }
 
 .rec.rec-arrow:hover {
-    background-color: #C4C4C4;
+  background-color: #C4C4C4;
 }
 
-.rec.rec-arrow-left {
-    padding-left: 3rem;
+.rec.rec-arrow-left{
+  margin-left: 3rem;
 }
 
 .rec.rec-arrow-right {
-    padding-right: 3rem;
+  margin-right: 3rem;
 }
 
 .rec.rec-dot_active{
