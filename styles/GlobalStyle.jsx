@@ -39,7 +39,22 @@ a {
   }
   ::-webkit-scrollbar-thumb:window-inactive {
     background: #575757;
-  } 
+  }
+
+  /* Styles to Slider component */
+.rec.rec-arrow {
+    background-color: #EAEAEA;
+    box-shadow: none;
+}
+
+.rec.rec-arrow:hover {
+    background-color: #C4C4C4;
+}
+
+.rec.rec-dot_active{
+  background-color: #6B6B6B;
+  box-shadow: 0 0 1px 3px #6B6B6B;
+}
 `;
 
 export default GlobalStyle;
