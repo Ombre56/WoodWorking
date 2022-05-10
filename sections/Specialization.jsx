@@ -14,7 +14,6 @@ export default function Specialization() {
 const SpecializationSection = styled.section`
   width: 100%;
   min-height: 100vh;
-  padding-bottom: 6.44rem;
   background-color: #EAEAEA;
 `;
 
