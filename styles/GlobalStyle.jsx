@@ -14,6 +14,11 @@ body {
 	src: url('/assets/fonts/Righteous-Regular.ttf');
 }
 
+@font-face {
+	font-family: Roboto;
+	src: url('/assets/fonts/Roboto-Regular.ttf');
+}
+
 a {
   color: inherit;
   text-decoration: none;
