@@ -58,10 +58,16 @@ a {
 
 .rec.rec-arrow-left{
   margin-left: 3rem;
+    @media screen and (max-width: 800px){
+            margin-left: .625rem;
+    }
 }
 
 .rec.rec-arrow-right {
   margin-right: 3rem;
+    @media screen and (max-width: 800px){
+            margin-right: .625rem;
+    }
 }
 
 .rec.rec-dot_active{
