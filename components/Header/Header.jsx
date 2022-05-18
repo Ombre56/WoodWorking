@@ -3,6 +3,7 @@ import Image from 'next/image'
 
 import { BsInstagram, BsFacebook } from 'react-icons/bs';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import Navigation from '../Navigation/Navigation';
 
 export default function Header() {
   return (
@@ -24,7 +25,7 @@ export default function Header() {
         <ShopAndNav>
           <AiOutlineShoppingCart className='shoppingCart' />
           <NavigationImg>
-            <Image src='/assets/images/Navigation.png' alt='Navigation' width={22} height={12} />
+              <Navigation />
           </NavigationImg>
         </ShopAndNav>
       </RightSide>
@@ -41,7 +42,7 @@ const HeaderBg = styled.section`
   align-items: center;
   position: fixed;
 	top: 0;
-  z-index: 10;
+  z-index: 1000;
 `;
 
 const LeftSide = styled.div`
