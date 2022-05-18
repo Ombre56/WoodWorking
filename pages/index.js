@@ -35,10 +35,18 @@ export default function Home() {
             </Loader>
             :
             <>
-              <Hero />
-              <AboutUs />
-              <Specialization />
-              <WhyUs />
+              <section id="home">
+                    <Hero/>          
+              </section>
+              <section id="aboutUs">
+                <AboutUs />                
+              </section>
+              <section id="specialization">
+                <Specialization />
+              </section>
+              <section id="whyUs">
+                <WhyUs />           
+              </section>
             </>
         }
       </main>
