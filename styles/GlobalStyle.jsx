@@ -74,6 +74,44 @@ a {
   background-color: #6B6B6B;
   box-shadow: 0 0 1px 3px #6B6B6B;
 }
+
+  /* Styles to Slider component */
+
+  /* Styles to Navigation component */
+
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 18.75rem;
+  z-index: 100;
+  box-shadow: 21px 2px 48px -1px rgba(0, 0, 0, 0.0.9);
+  background-color: red;
+}
+
+.inner-nav{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+button.toggle{
+  background-color: #ffffff;
+  z-index: 101;
+  position: fixed;
+  outline: 0;
+  border: none;
+  top: 18px;
+  left: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
 `;
 
 export default GlobalStyle;
