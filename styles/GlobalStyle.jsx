@@ -112,6 +112,7 @@ button.toggle{
   border-radius: 50%;
 }
 
+  /* Styles to Navigation component */
 `;
 
 export default GlobalStyle;
