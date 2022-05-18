@@ -22,9 +22,15 @@ const items = [
   },
 ];
 
+const breakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+  { width: 768, itemsToShow: 3 },
+];
+
 function Slider() {
   return (
-      <Carousel itemsToShow={3} preventDefaultTouchmoveEvent={true}>
+      <Carousel breakPoints={breakPoints} itemsToShow={3} preventDefaultTouchmoveEvent={true}>
       {items.map(item => 
         <SliderItems key={item.id}>
           <Image src={item.title} alt={item.id} width='357' height='535' />
