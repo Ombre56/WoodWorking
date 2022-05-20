@@ -1,13 +1,12 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import React from 'react';
 import { TilesDate } from './TilesDate'
 
 export default function Tiles() {
-  const [items, setItems] = useState(TilesDate);
   return (
   <TilesContainer>
-      {items.map(item =>
+      {TilesDate.map(item =>
         <Tile key={item.id}>  
             <h1>{item.title}</h1>
             <p>{item.text}</p>
