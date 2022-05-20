@@ -2,119 +2,92 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Link } from 'react-scroll';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { FaTimes } from 'react-icons/fa';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const iconVariants = {
-    opened: {
-      rotate: 135
-    },
-    closed: {
-      rotate: 0
-    }
-  };
+  const [toggleNavbar, setToggleNavbar] = useState(false);
 
   const menuVariants = {
-    opened: {
+    visible: {
       top: 0,
       transition: {
-        when: "beforeChildren",
-        staggerChildren: 0.7
+        duration: 0.9,
       }
     },
-    closed: {
-      top: "-100vh"
-    }
-  };
-
-  const linkVariants = {
-    opened: {
-      opacity: 1,
-      y: 50
-    },
-    closed: {
-      opacity: 0,
-      y: 0
+    hidden: {
+      top: "-100vh",
+      transition: {
+        duration: 0.9,
+      }
     }
   };
 
   return (
     <div className="App">
-      <NavButton>
+      <NavButton
+        animate={isOpen ? "visible" : "hidden"}
+        onClick={() => setIsOpen(!isOpen)}
+      >
         <SvgBox
-          variants={iconVariants}
-          animate={isOpen ? "opened" : "closed"}
-          onClick={() => setIsOpen(!isOpen)}
+          whileHover={{ scale: 1.4 }}
+          onClick={() => setToggleNavbar(!toggleNavbar)}
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z"
-              fill="#fff"
-            />
-          </svg>
+          {toggleNavbar ? (
+            <FaTimes  />
+          ) : (
+              <GiHamburgerMenu  />
+          )}
         </SvgBox>
       </NavButton>
       <Nav
         initial={false}
         variants={menuVariants}
-        animate={isOpen ? "opened" : "closed"}
+        animate={isOpen ? "visible" : "hidden"}
       >
         <LinksContainer>
           <NavLink
             to="home"
             smooth={true}
             duration={1000}
-            variants={linkVariants}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => { setIsOpen(!isOpen), setToggleNavbar(!toggleNavbar)}}
           >Strona główna</NavLink>
           <NavLink
             to="aboutUs"
             smooth={true}
             duration={1000}
-            variants={linkVariants}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => { setIsOpen(!isOpen), setToggleNavbar(!toggleNavbar)}}
           >O nas</NavLink>
           <NavLink
             to="specialization"
             smooth={true}
             duration={1000}
-            variants={linkVariants}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => { setIsOpen(!isOpen), setToggleNavbar(!toggleNavbar)}}
           >Specjalizacje</NavLink>
           <NavLink
             to="whyUs"
             smooth={true}
             duration={1000}
-            variants={linkVariants}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => { setIsOpen(!isOpen), setToggleNavbar(!toggleNavbar)}}
           >Dlaczego My</NavLink>
           <NavLink
             to="team"
             smooth={true}
             duration={1000}
-            variants={linkVariants}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => { setIsOpen(!isOpen), setToggleNavbar(!toggleNavbar)}}
           >Nasz zespół</NavLink>
           <NavLink
             to="reviews"
             smooth={true}
             duration={1000}
-            variants={linkVariants}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => { setIsOpen(!isOpen), setToggleNavbar(!toggleNavbar)}}
           >Recenzje</NavLink>
           <NavLink
             to="contact"
             smooth={true}
             duration={1000}
-            variants={linkVariants}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => { setIsOpen(!isOpen), setToggleNavbar(!toggleNavbar)}}
           >Kontakt</NavLink>
         </LinksContainer>
       </Nav>
@@ -128,7 +101,10 @@ const NavButton = styled.header`
 `;
 
 const Nav = styled(motion.nav)`
-  background-image: linear-gradient(149deg, rgba(241, 121, 0, 1) 43%, rgba(255, 255, 255, 1) 100%);
+  background-image: url('/assets/images/BackgroundNav.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
   box-shadow: 0px 22px 35px -19px rgba(66, 66, 72, 1);
   height: 90vh;
   width: 100vw;
@@ -140,7 +116,7 @@ const Nav = styled(motion.nav)`
   align-items: center;
 `;
 
-const LinksContainer = styled(motion.li)`
+const LinksContainer = styled(motion.div)`
   color: white;
   display: flex;
   flex-direction: column;
@@ -152,11 +128,37 @@ const LinksContainer = styled(motion.li)`
 const NavLink = styled(Link)`
   padding: 10px 0;
   font-size: 2.5rem;
+  position: relative;
   text-transform: uppercase;
   text-shadow: 4px 7px 7px rgba(66, 68, 90, 1);
+    &:hover{
+      color: #F17900;
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform .5s;
+    }
+    &:hover::after{
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
     @media screen and (max-width: 800px){
           font-size: 1.875rem;
     }
 `;
 
-const SvgBox = styled(motion.div)``;
+const SvgBox = styled(motion.div)`
+  svg{
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+`;
