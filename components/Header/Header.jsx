@@ -53,6 +53,9 @@ const Center = styled.div`
   flex-basis: 80%;
   text-align: center;
   padding-top: .625rem;
+    @media screen and (max-width: 800px){
+        padding-left: 1.25rem;
+    }
 `;
 
 const RightSide = styled.div`
