@@ -23,7 +23,7 @@ const WhyUsSection = styled.section`
 const Title = styled.h1`
   color: #F17900;
   margin: 0;
-  padding-top: 3.875rem;
+  padding-top: 20vh;
   font-family: 'Righteous';
   font-weight: 400;
   font-size: 4rem;
