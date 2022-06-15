@@ -22,12 +22,9 @@ export default function Header() {
         <Image src='/assets/images/Logo.png' alt='Logo' width='103' height='76' />
       </Center>
       <RightSide>
-        <ShopAndNav>
-          <AiOutlineShoppingCart className='shoppingCart' />
-          <NavigationImg>
-              <Navigation />
-          </NavigationImg>
-        </ShopAndNav>
+        <NavigationImg>
+          <Navigation />
+        </NavigationImg>
       </RightSide>
     </HeaderBg>
   );
@@ -46,7 +43,7 @@ const HeaderBg = styled.section`
 `;
 
 const LeftSide = styled.div`
-  flex-basis: 10%;
+  flex-basis: 15%;
 `;
 
 const Center = styled.div`
@@ -59,7 +56,7 @@ const Center = styled.div`
 `;
 
 const RightSide = styled.div`
-  flex-basis: 10%;
+  flex-basis: 5%;
 `;
 
 const InstagramAndFb = styled.div`
@@ -70,20 +67,8 @@ const InstagramAndFb = styled.div`
     }
 `;
 
-const ShopAndNav = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  color: #FFFFFF;
-
-  .shoppingCart{
-      width: 1.6875rem;
-      height: 1.4375rem;
-      margin-right: 1rem;
-    }
-`;
-
 const NavigationImg = styled.div`
   width: 30px;
   margin-bottom: 10px;
+  color: #FFFFFF;
 `;
