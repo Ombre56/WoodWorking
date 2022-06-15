@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import AboutUs from '../sections/AboutUs';
 import Hero from '../sections/Hero';
 import Specialization from '../sections/Specialization';
+import Team from '../sections/Team';
 import WhyUs from '../sections/WhyUs';
 
 export default function Home() {
@@ -46,6 +47,9 @@ export default function Home() {
               </section>
               <section id="whyUs">
                 <WhyUs />           
+              </section>
+              <section id="team">
+                <Team />
               </section>
             </>
         }
