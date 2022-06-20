@@ -67,9 +67,10 @@ const TeamCard = styled.div`
   justify-content: center;
   align-items: center;
         @media screen and (max-width: 800px){
-        margin-top: 6.25rem;
+        margin-top: 3.125rem;
         width: 16rem;
         height: 20.9375rem;
+        margin-bottom: 1.875rem;
     }
 `;
 
