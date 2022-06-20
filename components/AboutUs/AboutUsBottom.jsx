@@ -9,8 +9,8 @@ export default function AboutUsBottom() {
   const percentageSecond = 50;
   return (
     <AboutUsBottomContainer>
-      <FirstCycleContainer>
-        <FirstCycle>
+      <FirstCircleContainer>
+        <FirstCircle>
           <CircularProgressbar
             value={percentageFirst}
             text={`${percentageFirst}%`}
@@ -19,14 +19,14 @@ export default function AboutUsBottom() {
               pathColor: '#F17900',
             })}
           />
-        </FirstCycle>
+        </FirstCircle>
         <TextContainer>
-          <TitleCycle>Aktywni Klienci</TitleCycle>
-          <SubTitleCycle>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sapien lectus, mollis nec mattis sit amet, eleifend at turpis. Morbi vitae tortor nec turpis eleifend pharetra.</SubTitleCycle>
+          <TitleCircle>Aktywni Klienci</TitleCircle>
+          <SubTitleCircle>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sapien lectus, mollis nec mattis sit amet, eleifend at turpis. Morbi vitae tortor nec turpis eleifend pharetra.</SubTitleCircle>
         </TextContainer>
-      </FirstCycleContainer>
-      <SecondCycleContainer>
-        <SecondCycle>
+      </FirstCircleContainer>
+      <SecondCircleContainer>
+        <SecondCircle>
           <CircularProgressbar
             value={percentageSecond}
             text={`${percentageSecond}%`}
@@ -35,12 +35,12 @@ export default function AboutUsBottom() {
               pathColor: '#020053',
             })}
           />
-        </SecondCycle>
+        </SecondCircle>
         <TextContainer>
-          <TitleCycle>Aktywni Klienci</TitleCycle>
-          <SubTitleCycle>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sapien lectus, mollis nec mattis sit amet, eleifend at turpis. Morbi vitae tortor nec turpis eleifend pharetra.</SubTitleCycle>
+          <TitleCircle>Aktywni Klienci</TitleCircle>
+          <SubTitleCircle>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sapien lectus, mollis nec mattis sit amet, eleifend at turpis. Morbi vitae tortor nec turpis eleifend pharetra.</SubTitleCircle>
         </TextContainer>
-      </SecondCycleContainer>
+      </SecondCircleContainer>
     </AboutUsBottomContainer>
   );
 };
@@ -50,7 +50,7 @@ const AboutUsBottomContainer = styled.div`
   flex-direction: column;
 `;
 
-const FirstCycleContainer = styled.div`
+const FirstCircleContainer = styled.div`
   width: 43.5vw;
   display: flex;
   flex-direction: row;
@@ -61,7 +61,7 @@ const FirstCycleContainer = styled.div`
     }
 `;
 
-const SecondCycleContainer = styled.div`
+const SecondCircleContainer = styled.div`
   width: 43.5vw;
   margin-top: 4rem;
   display: flex;
@@ -73,13 +73,13 @@ const SecondCycleContainer = styled.div`
     }
 `;
 
-const FirstCycle = styled.div`
+const FirstCircle = styled.div`
   width: 11rem;
   height: 11rem;
   flex-basis: 20%;
 `;
 
-const SecondCycle = styled.div`
+const SecondCircle = styled.div`
   width: 11rem;
   height: 11rem;
 `;
@@ -93,7 +93,7 @@ const TextContainer = styled.div`
     }
 `;
 
-const TitleCycle = styled.h2`
+const TitleCircle = styled.h2`
   font-family: 'Roboto';
   font-weight: 400;
   font-size: 40px;
@@ -104,7 +104,7 @@ const TitleCycle = styled.h2`
     }
 `;
 
-const SubTitleCycle = styled.p`
+const SubTitleCircle = styled.p`
   font-family: 'Roboto';
   font-weight: 400;
   font-size: 20px;
