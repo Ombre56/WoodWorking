@@ -1,11 +1,19 @@
 import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { fromLeftAnimation, scaleAnimation } from '../Animation/Animation';
+import { useScroll } from '../Hooks/useScroll';
 
 export default function AboutUsTop() {
+  const [element, controls] = useScroll();
   return (
-    <AboutUsTopContainer>
-      <TextContainer>
+    <AboutUsTopContainer ref={element}>
+      <TextContainer
+        variants={fromLeftAnimation}
+        animate={controls}
+        transition={{delay: 0.1, type: "tween"}}
+        >
         <TitleAboutUs>
           O nas
         </TitleAboutUs>
@@ -14,7 +22,11 @@ export default function AboutUsTop() {
         </SubTitleAboutUs>
       </TextContainer>
       <ImagesContainer>
-        <ImageOneAboutUs>
+        <ImageOneAboutUs
+            variants={scaleAnimation}
+            animate={controls}
+            transition={{ type: "tween" }}            
+        >
           <Image
             src='/assets/images/aboutUsPng1.png'
             alt='AboutUsImage1'
@@ -23,7 +35,11 @@ export default function AboutUsTop() {
             height={288}
           />
         </ImageOneAboutUs>
-        <ImageTwoAboutUs>
+        <ImageTwoAboutUs
+            variants={scaleAnimation}
+            animate={controls}
+            transition={{ delay: 0.2, type: "tween" }}              
+        >
           <Image
             src='/assets/images/aboutUsPng2.png'
             alt='AboutUsImage2'
@@ -46,7 +62,7 @@ const AboutUsTopContainer = styled.div`
     }
 `;
 
-const TextContainer = styled.div`
+const TextContainer = styled(motion.div)`
   width: 50%;
   height: 25rem;
   padding-left: 6.8125rem;
@@ -63,6 +79,7 @@ const ImagesContainer = styled.div`
     @media screen and (max-width: 800px){
         margin: 1.25rem 0;
         width: 100%;
+        padding-left: 10px;
     }
 `;
 
@@ -91,25 +108,26 @@ const SubTitleAboutUs = styled.p`
     }
 `;
 
-const ImageOneAboutUs = styled.div`
+const ImageOneAboutUs = styled(motion.div)`
   width: 27rem;
   height: 18rem;
   padding-top: 30px;
     @media screen and (max-width: 800px){
-        width: 20.75rem;
-        height: 11.75rem;
+        width: 300px;
+        height: 150px;
     }
 `;
 
-const ImageTwoAboutUs = styled.div`
+const ImageTwoAboutUs = styled(motion.div)`
   position: absolute;
   left: 6rem;
   top: 11.375rem;
   width: 27rem;
   height: 18rem;
     @media screen and (max-width: 800px){
-        left: 1rem;
-        width: 20.75rem;
-        height: 11.75rem;
+        left: 0;
+        top: 11.375rem;
+        width: 300px;
+        height: 150px;
     }
 `;

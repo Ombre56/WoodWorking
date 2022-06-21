@@ -1,11 +1,21 @@
 import React from 'react'
 import styled from 'styled-components';
 import Slider from '../components/Specialization/Slider';
+import { motion } from 'framer-motion';
+import { fromLeftAnimation } from '../components/Animation/Animation';
+import { useScroll } from '../components/Hooks/useScroll';
 
 export default function Specialization() {
+  const [element, controls] = useScroll();
   return (
-    <SpecializationSection>
-      <Title>specjalizacje</Title>
+    <SpecializationSection ref={element}>
+      <motion.div
+        variants={fromLeftAnimation}
+        animate={controls}
+        transition={{delay: 0.1, type: "tween"}}      
+      >
+        <Title>specjalizacje</Title>
+      </motion.div>
       <Slider />
     </SpecializationSection>
   )

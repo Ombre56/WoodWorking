@@ -22,7 +22,7 @@ function Card() {
     <>
       <TeamCard>
         <ProfilePhoto>
-          <Image src="/assets/images/firstPhotoProfile.png" alt="First photo" width={232} height={252} />
+          <Image src="/assets/images/noPhotoProfile.png" alt="First photo" width={232} height={252} />
         </ProfilePhoto>
         <Name>Jan Kowalski</Name>
         <Profession>st.Stolarz</Profession>
@@ -32,7 +32,7 @@ function Card() {
       </TeamCard>
       <TeamCard>
         <ProfilePhoto>
-          <Image src="/assets/images/secondPhotoProfile.png" alt="First photo" width={232} height={252} />
+          <Image src="/assets/images/noPhotoProfile.png" alt="First photo" width={232} height={252} />
         </ProfilePhoto>
         <Name>Jan Kowalski</Name>
         <Profession>Stolarz</Profession>      
@@ -42,7 +42,7 @@ function Card() {
       </TeamCard>
       <TeamCard>
         <ProfilePhoto>
-          <Image src="/assets/images/thirdPhotoProfile.png" alt="First photo" width={232} height={252} />
+          <Image src="/assets/images/noPhotoProfile.png" alt="First photo" width={232} height={252} />
         </ProfilePhoto>
         <Name>Jan Kowalski</Name>
         <Profession>st.Stolarz</Profession>
@@ -79,7 +79,7 @@ const ProfilePhoto = styled.div`
   top: -2.75rem;
   left: 3.5625rem;
   z-index: 10;
-      @media screen and (max-width: 800px){
+    @media screen and (max-width: 800px){
         margin-top: 6.25rem;
         width: 9.375rem;
         height: 10.625rem;

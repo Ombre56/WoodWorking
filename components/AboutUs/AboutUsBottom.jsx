@@ -2,14 +2,21 @@ import React from 'react'
 import styled from 'styled-components';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-
+import { motion } from 'framer-motion';
+import { fromLeftAnimation } from '../Animation/Animation';
+import { useScroll } from '../Hooks/useScroll';
 
 export default function AboutUsBottom() {
+  const [element, controls] = useScroll();
   const percentageFirst = 80;
   const percentageSecond = 50;
   return (
-    <AboutUsBottomContainer>
-      <FirstCircleContainer>
+    <AboutUsBottomContainer ref={element}>
+      <FirstCircleContainer
+        variants={fromLeftAnimation}
+        animate={controls}
+        transition={{delay: 0.1, type: "tween"}}        
+      >
         <FirstCircle>
           <CircularProgressbar
             value={percentageFirst}
@@ -25,7 +32,11 @@ export default function AboutUsBottom() {
           <SubTitleCircle>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sapien lectus, mollis nec mattis sit amet, eleifend at turpis. Morbi vitae tortor nec turpis eleifend pharetra.</SubTitleCircle>
         </TextContainer>
       </FirstCircleContainer>
-      <SecondCircleContainer>
+      <SecondCircleContainer
+        variants={fromLeftAnimation}
+        animate={controls}
+        transition={{delay: 0.1, type: "tween"}}
+      >
         <SecondCircle>
           <CircularProgressbar
             value={percentageSecond}
@@ -50,7 +61,7 @@ const AboutUsBottomContainer = styled.div`
   flex-direction: column;
 `;
 
-const FirstCircleContainer = styled.div`
+const FirstCircleContainer = styled(motion.div)`
   width: 43.5vw;
   display: flex;
   flex-direction: row;
@@ -61,7 +72,7 @@ const FirstCircleContainer = styled.div`
     }
 `;
 
-const SecondCircleContainer = styled.div`
+const SecondCircleContainer = styled(motion.div)`
   width: 43.5vw;
   margin-top: 4rem;
   display: flex;

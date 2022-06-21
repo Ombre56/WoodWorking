@@ -1,20 +1,36 @@
 import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { scaleAnimation } from '../Animation/Animation';
+import { useScroll } from '../Hooks/useScroll';
 
 export default function HeroBanner() {
+  const [element, controls] = useScroll();
   return (
     <>
       <BannerImage >
         <Image src="/assets/images/Background.jpg" alt='HeroBackgroundImage' layout='fill' objectFit='cover' objectPosition='center'/>
       </BannerImage>
-      <HeroTextContainer>
-        <HeroTitle>
-          STOLARZ
-        </HeroTitle>
-        <HeroSubTitle>
+      <HeroTextContainer ref={element}>
+        <motion.div
+            variants={scaleAnimation}
+            animate={controls}
+            transition={{ type: "tween" }}               
+        >
+          <HeroTitle>
+            STOLARZ
+          </HeroTitle>
+        </motion.div>
+        <motion.div
+            variants={scaleAnimation}
+            animate={controls}
+            transition={{ delay: 0.2, type: "tween" }}             
+        >
+          <HeroSubTitle>
             Ręczne wykonanie | Jakość | Kreatywność
-        </HeroSubTitle>
+          </HeroSubTitle>
+        </motion.div>
       </HeroTextContainer>
     </>
   );

@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import RingLoader from "react-spinners/RingLoader";
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 
 import AboutUs from '../sections/AboutUs';
@@ -37,7 +38,7 @@ export default function Home() {
               <RingLoader color={'#F17900'} loading={loading} size={150}/>
             </Loader>
             :
-            <>
+            <motion.div initial="hidden" animate="show">
               <ScrollToTop />
               <section id="home">
                     <Hero/>          
@@ -57,7 +58,7 @@ export default function Home() {
               <section id="information">
                 <Information />
               </section>
-            </>
+            </motion.div>
         }
       </main>
     </>
