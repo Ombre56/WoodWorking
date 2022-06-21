@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import RingLoader from "react-spinners/RingLoader";
 import styled from 'styled-components';
+import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 
 import AboutUs from '../sections/AboutUs';
 import Hero from '../sections/Hero';
@@ -37,6 +38,7 @@ export default function Home() {
             </Loader>
             :
             <>
+              <ScrollToTop />
               <section id="home">
                     <Hero/>          
               </section>
