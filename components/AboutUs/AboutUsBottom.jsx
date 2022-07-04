@@ -3,21 +3,20 @@ import styled from 'styled-components';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { motion } from 'framer-motion';
-import { fromLeftAnimation } from '../Animation/Animation';
-import { useScroll } from '../Hooks/useScroll';
+import { fromDownAnimation, fromUpAnimation } from '../Animation/Animation';
 
 export default function AboutUsBottom() {
-  const [element, controls] = useScroll();
   const percentageFirst = 80;
   const percentageSecond = 50;
   return (
-    <AboutUsBottomContainer ref={element}>
+    <AboutUsBottomContainer>
       <FirstCircleContainer
-        variants={fromLeftAnimation}
-        animate={controls}
-        transition={{delay: 0.1, type: "tween"}}        
+        initial={"hidden"}
+        whileInView={"show"}
+        viewport={{ once: true, amount: 0.8 }}
+        transition={{staggerChildren: 0.5}}
       >
-        <FirstCircle>
+        <FirstCircle variants={fromDownAnimation}>
           <CircularProgressbar
             value={percentageFirst}
             text={`${percentageFirst}%`}
@@ -27,17 +26,18 @@ export default function AboutUsBottom() {
             })}
           />
         </FirstCircle>
-        <TextContainer>
+        <TextContainer variants={fromUpAnimation}>
           <TitleCircle>Aktywni Klienci</TitleCircle>
           <SubTitleCircle>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sapien lectus, mollis nec mattis sit amet, eleifend at turpis. Morbi vitae tortor nec turpis eleifend pharetra.</SubTitleCircle>
         </TextContainer>
       </FirstCircleContainer>
       <SecondCircleContainer
-        variants={fromLeftAnimation}
-        animate={controls}
-        transition={{delay: 0.1, type: "tween"}}
+        initial={"hidden"}
+        whileInView={"show"}
+        viewport={{ once: true, amount: 0.8 }}
+        transition={{staggerChildren: 0.5}}
       >
-        <SecondCircle>
+        <SecondCircle variants={fromDownAnimation}>
           <CircularProgressbar
             value={percentageSecond}
             text={`${percentageSecond}%`}
@@ -47,7 +47,7 @@ export default function AboutUsBottom() {
             })}
           />
         </SecondCircle>
-        <TextContainer>
+        <TextContainer variants={fromDownAnimation}>
           <TitleCircle>Aktywni Klienci</TitleCircle>
           <SubTitleCircle>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sapien lectus, mollis nec mattis sit amet, eleifend at turpis. Morbi vitae tortor nec turpis eleifend pharetra.</SubTitleCircle>
         </TextContainer>
@@ -84,18 +84,18 @@ const SecondCircleContainer = styled(motion.div)`
     }
 `;
 
-const FirstCircle = styled.div`
+const FirstCircle = styled(motion.div)`
   width: 11rem;
   height: 11rem;
   flex-basis: 20%;
 `;
 
-const SecondCircle = styled.div`
+const SecondCircle = styled(motion.div)`
   width: 11rem;
   height: 11rem;
 `;
 
-const TextContainer = styled.div`
+const TextContainer = styled(motion.div)`
   padding-left: 1.875rem;
   flex-basis: 80%;
       @media screen and (max-width: 800px){

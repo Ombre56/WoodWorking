@@ -1,11 +1,31 @@
 export const fromLeftAnimation = {
   hidden: {
-    x: -100,
+    x: -20,
     opacity: 0,
   },
   show: {
     x: 1,
     opacity: 1,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8
+    },
+  },
+};
+export const fromRightAnimation = {
+  hidden: {
+    x: 20,
+    opacity: 0,
+  },
+  show: {
+    x: 1,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8
+    },
   },
 };
 
@@ -17,6 +37,10 @@ export const scaleAnimation = {
   show: {
     scale: 1,
     opacity: 1,
+    transition: {
+      type: "spring",
+      duration: 1
+    }
   },
 };
 
@@ -26,6 +50,11 @@ export const navbarAnimation = {
   },
   show: {
     y: 0,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8
+    },
   },
 };
 
@@ -37,6 +66,11 @@ export const fromUpAnimation = {
   show: {
     y: 1,
     opacity: 1,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8
+    },
   },
 };
 
@@ -48,5 +82,10 @@ export const fromDownAnimation = {
   show: {
     y: 1,
     opacity: 1,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8
+    },
   },
 };

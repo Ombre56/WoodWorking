@@ -2,31 +2,31 @@ import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { fromLeftAnimation, scaleAnimation } from '../Animation/Animation';
-import { useScroll } from '../Hooks/useScroll';
+import { fromLeftAnimation, fromRightAnimation } from '../Animation/Animation';
 
 export default function AboutUsTop() {
-  const [element, controls] = useScroll();
   return (
-    <AboutUsTopContainer ref={element}>
+    <AboutUsTopContainer>
       <TextContainer
-        variants={fromLeftAnimation}
-        animate={controls}
-        transition={{delay: 0.1, type: "tween"}}
-        >
-        <TitleAboutUs>
+        initial={"hidden"}
+        whileInView={"show"}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{staggerChildren: 0.5}}
+      >
+        <TitleAboutUs variants={fromLeftAnimation}>
           O nas
         </TitleAboutUs>
-        <SubTitleAboutUs>
+        <SubTitleAboutUs variants={fromLeftAnimation}>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit.
         </SubTitleAboutUs>
       </TextContainer>
-      <ImagesContainer>
-        <ImageOneAboutUs
-            variants={scaleAnimation}
-            animate={controls}
-            transition={{ type: "tween" }}            
-        >
+      <ImagesContainer
+        initial={"hidden"}
+        whileInView={"show"}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{staggerChildren: 0.5}}
+      >
+        <ImageOneAboutUs variants={fromRightAnimation}>
           <Image
             src='/assets/images/aboutUsPng1.png'
             alt='AboutUsImage1'
@@ -35,11 +35,7 @@ export default function AboutUsTop() {
             height={288}
           />
         </ImageOneAboutUs>
-        <ImageTwoAboutUs
-            variants={scaleAnimation}
-            animate={controls}
-            transition={{ delay: 0.2, type: "tween" }}              
-        >
+        <ImageTwoAboutUs variants={fromRightAnimation}>
           <Image
             src='/assets/images/aboutUsPng2.png'
             alt='AboutUsImage2'
@@ -72,7 +68,7 @@ const TextContainer = styled(motion.div)`
     }
 `;
 
-const ImagesContainer = styled.div`
+const ImagesContainer = styled(motion.div)`
   position: relative;
   width: 50%;
   height: 25rem;
@@ -83,7 +79,7 @@ const ImagesContainer = styled.div`
     }
 `;
 
-const TitleAboutUs = styled.h1`
+const TitleAboutUs = styled(motion.h1)`
   font-family: 'Righteous', cursive;
   font-weight: 400;
   font-size: 4rem;
@@ -95,7 +91,7 @@ const TitleAboutUs = styled.h1`
     }
 `;
 
-const SubTitleAboutUs = styled.p`
+const SubTitleAboutUs = styled(motion.p)`
   width: 22vw;
   height: 13vh;
   font-family: 'Roboto';

@@ -2,32 +2,26 @@ import React from 'react'
 import styled from 'styled-components';
 import Tiles from '../components/WhyUs/Tiles';
 import { motion } from 'framer-motion';
-import { fromUpAnimation, fromDownAnimation } from '../components/Animation/Animation';
-import { useScroll } from '../components/Hooks/useScroll';
+import { fromDownAnimation, fromLeftAnimation } from '../components/Animation/Animation';
 
 export default function WhyUs() {
-  const [element, controls] = useScroll();
   return (
-    <WhyUsSection ref={element}>
+    <WhyUsSection>
       <motion.div
-        variants={fromUpAnimation}
-        animate={controls}
-        transition={{delay: 0.1, type: "tween"}}      
+        initial={"hidden"}
+        whileInView={"show"}
+        viewport={{ once: true, amount: 0.8 }}          
       >
-        <Title>Dlaczego My</Title>
+        <Title variants={fromDownAnimation}>Dlaczego My</Title>
       </motion.div>
-      <motion.div
-        variants={fromDownAnimation}
-        animate={controls}
-        transition={{delay: 0.1, type: "tween"}}            
-      >
-        <Tiles />
+      <motion.div>
+        <Tiles variants={fromLeftAnimation}/>
       </motion.div>  
     </WhyUsSection>
   )
 }
 
-const WhyUsSection = styled(motion.div)`
+const WhyUsSection = styled.div`
   width: 100%;
   min-height: 100vh;
   background-image: url('/assets/images/WhyUsBackground.png');
@@ -36,10 +30,10 @@ const WhyUsSection = styled(motion.div)`
   object-fit: cover;
 `;
 
-const Title = styled.h1`
+const Title = styled(motion.h1)`
   color: #F17900;
   margin: 0;
-  padding-top: 20vh;
+  padding-top: 7rem;
   font-family: 'Righteous';
   font-weight: 400;
   font-size: 4rem;
