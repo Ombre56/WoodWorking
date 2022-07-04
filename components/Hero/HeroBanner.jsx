@@ -2,35 +2,34 @@ import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { scaleAnimation } from '../Animation/Animation';
-import { useScroll } from '../Hooks/useScroll';
+import { fromLeftAnimation, fromRightAnimation } from '../Animation/Animation';
 
 export default function HeroBanner() {
-  const [element, controls] = useScroll();
   return (
     <>
       <BannerImage >
-        <Image src="/assets/images/Background.jpg" alt='HeroBackgroundImage' layout='fill' objectFit='cover' objectPosition='center'/>
+        <Image
+          link='preload'
+          as='image'
+          src="/assets/images/Background.jpg"
+          alt='HeroBackgroundImage'
+          layout='fill'
+          objectFit='cover'
+          objectPosition='center'
+          priority='true'
+        />
       </BannerImage>
-      <HeroTextContainer ref={element}>
-        <motion.div
-            variants={scaleAnimation}
-            animate={controls}
-            transition={{ type: "tween" }}               
-        >
-          <HeroTitle>
+      <HeroTextContainer
+        initial={"hidden"}
+        whileInView={"show"}
+        viewport={{ once: true, amount: 0.8 }}
+      >
+          <HeroTitle variants={fromLeftAnimation}>
             STOLARZ
           </HeroTitle>
-        </motion.div>
-        <motion.div
-            variants={scaleAnimation}
-            animate={controls}
-            transition={{ delay: 0.2, type: "tween" }}             
-        >
-          <HeroSubTitle>
+          <HeroSubTitle variants={fromRightAnimation}>
             Ręczne wykonanie | Jakość | Kreatywność
           </HeroSubTitle>
-        </motion.div>
       </HeroTextContainer>
     </>
   );
@@ -43,7 +42,7 @@ const BannerImage = styled.div`
   height: 100vh;
   `;
 
-const HeroTextContainer = styled.section`
+const HeroTextContainer = styled(motion.section)`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -53,7 +52,7 @@ const HeroTextContainer = styled.section`
   color: #FFFFFF;
 `;
 
-const HeroTitle = styled.h1`
+const HeroTitle = styled(motion.h1)`
   font-family: 'Roboto';
   font-weight: 400;
   font-size: 6rem;
@@ -65,7 +64,7 @@ const HeroTitle = styled.h1`
     }
 `;
 
-const HeroSubTitle = styled.p`
+const HeroSubTitle = styled(motion.p)`
   font-family: 'Roboto';
   font-weight: 400;
   font-size: 2.25rem;
