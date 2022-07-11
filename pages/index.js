@@ -11,6 +11,7 @@ import Information from '../sections/Information';
 import Specialization from '../sections/Specialization';
 import Team from '../sections/Team';
 import WhyUs from '../sections/WhyUs';
+import Reviews from '../sections/Reviews';
 
 export default function Home() {
   let [loading, setLoading] = useState(false);
@@ -57,6 +58,9 @@ export default function Home() {
               </section>
               <section id="information">
                 <Information />
+              </section>
+              <section id="reviews">
+                <Reviews />
               </section>
             </motion.div>
         }
