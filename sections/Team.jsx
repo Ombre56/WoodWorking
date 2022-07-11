@@ -24,6 +24,7 @@ const Title = styled.h1`
   font-family: 'Righteous';
   font-weight: 400;
   font-size: 4rem;
+  text-transform: uppercase;
   line-height: 5rem;
   text-align: center;
     @media screen and (max-width: 800px){

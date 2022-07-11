@@ -83,6 +83,7 @@ const TitleAboutUs = styled(motion.h1)`
   font-family: 'Righteous', cursive;
   font-weight: 400;
   font-size: 4rem;
+  text-transform: uppercase;
   line-height: 79px;
   padding: .125rem 1.25rem;
   color: #F17900;
