@@ -68,7 +68,7 @@ const CustomerReview = styled.div`
       font-size: 15px;
       line-height: 19px;
       text-align: justify;
-      color: rgba(0, 0, 0, 0.22);
+      color: #000000;
       padding: 0 15px;
     }
     .img-circle {
