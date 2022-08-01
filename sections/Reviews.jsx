@@ -16,7 +16,7 @@ export default Reviews
 const ReviewsSection = styled.section`
   width: 100%;
   min-height: 100vh;
-  background-color: #EAEAEA;;
+  background-color: #EAEAEA;
 `;
 
 const Title = styled.h1`
