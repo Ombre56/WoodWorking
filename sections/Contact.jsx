@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import BusinessCard from '../components/Contact/BusinessCard';
 import Form from '../components/Contact/Form';
-// import Map from '../components/Contact/Map';
+import MapLocation from '../components/Contact/MapLocation';
 
 function Contact() {
   return (
@@ -13,7 +13,7 @@ function Contact() {
       </CotainerUp>
       <CotainerDown>
         <Form />
-        {/* <Map /> */}
+        <MapLocation />
       </CotainerDown>
     </ContactSection>
   )
@@ -38,7 +38,10 @@ const CotainerUp = styled.div`
 
 const CotainerDown = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: row;    
+    @media screen and (max-width: 800px){
+      flex-direction: column;
+      }
 `;
 
 const Title = styled.h1`

@@ -44,7 +44,9 @@ const BusinessCardContainer = styled.div`
   border-radius: 7px;
     @media screen and (max-width: 800px){
       width: 16.0625rem;
+      height: 450px;
       margin: 2.875rem 1.25rem;
+      flex-direction: column;
     }
 `;
 
@@ -54,6 +56,9 @@ const LeftSide = styled.div`
 
 const Center = styled.div`
   flex: 2 25rem;
+    @media screen and (max-width: 800px){
+      padding-top: 15px;
+    }
 `;
 
 const RightSide = styled.div`
@@ -81,10 +86,12 @@ const Title = styled.h1`
   font-weight: 400;
   text-transform: uppercase;
   font-size: 36px;
-  line-height: 45px;
   color: #000000;
   padding-top: 1.25rem;
   padding-left: 1.8125rem;
+    @media screen and (max-width: 800px){
+      font-size: 26px;
+    }
 `;
 
 const Address = styled.p`

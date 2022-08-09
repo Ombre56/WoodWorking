@@ -56,7 +56,7 @@ function Form() {
     <ContainerForm>
       <form onSubmit={formik.handleSubmit}>
         <ContainerInputs>
-          <div>
+          <div className='mobile-view-input'>
             <input
               type="text"
               id='name'
@@ -67,7 +67,7 @@ function Form() {
             />
             {formik.touched.name && formik.errors.name ? <span className='form-error'>{formik.errors.name}</span> : null}
           </div>
-          <div>
+          <div className='mobile-view-input'>
             <input
               type="text"
               id='surname'
@@ -78,7 +78,7 @@ function Form() {
             />
             {formik.touched.surname && formik.errors.surname ? <span className='form-error'>{formik.errors.surname}</span> : null}
           </div>
-          <div>
+          <div className='mobile-view-input'>
             <input
               type="text"
               id='email'
@@ -89,7 +89,7 @@ function Form() {
             />
             {formik.touched.email && formik.errors.email ? <span className='form-error'>{formik.errors.email}</span> : null}
           </div>
-          <div>
+          <div className='mobile-view-input'>
             <input
               type="text"
               id='telephone'
@@ -101,15 +101,16 @@ function Form() {
             {formik.touched.telephone && formik.errors.telephone ? <span className='form-error'>{formik.errors.telephone}</span> : null}
           </div>
         </ContainerInputs>
-        <textarea
-          id='description'
-          name='description'
-          placeholder='Opisz swój projekt'
-          className='form-textarea'
-          {...formik.getFieldProps('description')}
-        />
-        {formik.touched.description && formik.errors.description ? <span className='form-error'>{formik.errors.description}</span> : null}
-
+        <div className='mobile-view-textarea'>
+          <textarea
+            id='description'
+            name='description'
+            placeholder='Opisz swój projekt'
+            className='form-textarea'
+            {...formik.getFieldProps('description')}
+          />
+          {formik.touched.description && formik.errors.description ? <span className='form-error'>{formik.errors.description}</span> : null}
+        </div>
         <button type="submit">Wyślij</button>
       </form>
     </ContainerForm>
@@ -121,6 +122,18 @@ export default Form;
 const ContainerForm = styled.div`
   width: 35.6875rem;
   margin: 2.875rem 11.5625rem;
+    @media screen and (max-width: 800px){
+      width: 300px;
+      margin: 2.875rem auto;
+      padding: 0 10px;
+      .mobile-view-input{
+        display: flex;
+        flex-direction: column;
+      }
+      .mobile-view-textarea{
+        width: 16.68rem;
+      }
+    }
   .form-input, .form-textarea{
     width: 16.68rem;
     height: 3.56rem;
@@ -156,6 +169,9 @@ const ContainerForm = styled.div`
     font-size: 24px;
     text-align: center;
     cursor: pointer;
+      @media screen and (max-width: 800px){
+        margin-left: 145px;
+      }
   }
 
   .form-error{
@@ -169,4 +185,7 @@ const ContainerInputs = styled.div`
   grid-template-columns: repeat(2, 1fr);
   column-gap: 37px;
   row-gap: 21px;
+    @media screen and (max-width: 800px){
+      grid-template-columns: repeat(1, 1fr);
+    }
 `;
