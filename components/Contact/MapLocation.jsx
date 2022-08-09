@@ -59,5 +59,6 @@ const ContainerMap = styled.div`
     @media screen and (max-width: 800px){
       width: 300px;
       margin-left: 30px;
+      margin-bottom: 20px;
     }
 `;
