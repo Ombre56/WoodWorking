@@ -13,6 +13,7 @@ import Team from '../sections/Team';
 import WhyUs from '../sections/WhyUs';
 import Reviews from '../sections/Reviews';
 import Contact from '../sections/Contact';
+import Footer from '../sections/Footer';
 
 export default function Home() {
   let [loading, setLoading] = useState(false);
@@ -66,6 +67,7 @@ export default function Home() {
               <section id="contact">
                 <Contact />
               </section>
+              <Footer />
             </motion.div>
         }
       </main>
