@@ -5,6 +5,7 @@ import { BsInstagram, BsFacebook } from 'react-icons/bs';
 import Navigation from '../Navigation/Navigation';
 import { motion } from 'framer-motion';
 import { navbarAnimation } from '../Animation/Animation';
+import Link from 'next/link';
 
 export default function Header() {
   return (
@@ -26,6 +27,9 @@ export default function Header() {
         <Image src='/assets/images/Logo.png' alt='Logo' width='103' height='76' />
       </Center>
       <RightSide>
+        <ShopLink>
+          <Link href="/sklep">SKLEP</Link>
+        </ShopLink>
         <NavigationImg>
           <Navigation />
         </NavigationImg>
@@ -51,7 +55,7 @@ const LeftSide = styled.div`
 `;
 
 const Center = styled.div`
-  flex-basis: 90%;
+  flex-basis: 85%;
   text-align: center;
   padding-top: .625rem;
     @media screen and (max-width: 800px){
@@ -60,7 +64,11 @@ const Center = styled.div`
 `;
 
 const RightSide = styled.div`
-  flex-basis: 5%;
+  flex-basis: 10%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
 `;
 
 const InstagramAndFb = styled.div`
@@ -68,6 +76,20 @@ const InstagramAndFb = styled.div`
   color: #FFFFFF;
     a{
       padding: 0 .625rem;
+    }
+`;
+
+const ShopLink = styled.p`
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  padding-top: 10px;
+  &:hover{
+    color: #F17900;
+    cursor: pointer;
+  }
+    @media screen and (max-width: 800px){
+        font-size: 1.25rem;
+        padding-right: 10px;
     }
 `;
 
