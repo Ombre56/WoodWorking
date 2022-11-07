@@ -10,13 +10,14 @@ export default function HeroBanner() {
       <BannerImage >
         <Image
           link='preload'
+          rel='preload'
           as='image'
           src="/assets/images/Background.jpg"
           alt='HeroBackgroundImage'
           layout='fill'
           objectFit='cover'
           objectPosition='center'
-          priority='true'
+          priority
         />
       </BannerImage>
       <HeroTextContainer
