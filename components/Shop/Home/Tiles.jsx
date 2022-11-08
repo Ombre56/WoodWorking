@@ -1,26 +1,43 @@
 import Image from 'next/image';
 import React from 'react'
 import styled from 'styled-components';
+import { getProducts } from '../../../lib/helper';
+import { useQuery } from 'react-query';
 
 export default function Tiles() {
+
+  const { isLoading, isError, data, error } = useQuery('product', getProducts);
+  console.log(data)
+
+  if (isLoading) {
+    return <div>Produkt jest ładowany...</div>;
+  }
+  if (isError) {
+    return <div>Błąd ładowania {error}</div>;
+  }
+
   return (
-    <Tile>
-      <ImageContainer>
-        <Image
-          src='/assets/images/TileImage.jpg'
-          alt='TileImage'
-          width='90'
-          height='62'
-          layout='responsive'
-          priority
-        />
-      </ImageContainer>
-      <Title>Stół z dębowego drewna</Title>
-      <Price>300zł</Price>
-      <Button>
-        <span>Sprawdź</span>
-      </Button>
-    </Tile>
+    <>
+      {data.map((product) =>
+        <Tile>
+            <ImageContainer>
+              <Image
+                src={product.image}
+                alt='TileImage'
+                width='90'
+                height='62'
+                layout='responsive'
+                priority
+              />
+            </ImageContainer>
+            <Title>{product.name}</Title>
+            <Price>{product.price} zł</Price>
+            <Button>
+              <span>Sprawdź</span>
+            </Button>      
+        </Tile>
+        )}
+    </>
   )
 }
 

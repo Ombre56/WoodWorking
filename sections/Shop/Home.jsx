@@ -18,11 +18,6 @@ export default function Home() {
       <UnderHeroSection>
         <GridTiles>
           <Tiles />
-          <Tiles />
-          <Tiles />
-          <Tiles />
-          <Tiles />
-          <Tiles />
         </GridTiles>
         <Navigation>
           <CategoryAndProfile>
@@ -72,12 +67,20 @@ const Title = styled.h2`
     }
 `;
 
+const UnderHeroSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 const GridTiles = styled.div`
   margin: 2.875rem 0 1.25rem 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 1.25rem;
   row-gap: 1.25rem;
+  height: 35vh;
     @media screen and (max-width: 427px){
       grid-template-columns: repeat(2, 1fr);
     }
@@ -88,26 +91,19 @@ const GridTiles = styled.div`
     }
 `;
 
-const UnderHeroSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
 const Navigation = styled.div`
   width: 14.5rem;
   height: 3.5rem;
   background: #FFFFFF;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  margin-top: 2.1875rem;
+  margin-top: 1.875rem;
   display: flex;
   justify-content: space-evenly;
   span{
     font-weight: 700;
-    font-size: 7px;
-    line-height: 8px;
+    font-size: 10px;
+    line-height: 11px;
     text-align: center;
   }
     @media screen and (min-width: 992px){
