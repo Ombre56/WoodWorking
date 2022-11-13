@@ -3,14 +3,17 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
+    "heroku-postbuild": "npm run build",
     "lint": "next lint"
   },
   "dependencies": {
     "@react-google-maps/api": "^2.12.1",
+    "@reduxjs/toolkit": "^1.9.0",
     "babel-plugin-styled-components": "^2.0.6",
     "formik": "^2.2.9",
     "framer-motion": "^6.3.2",
+    "mongoose": "^6.7.2",
     "next": "12.1.4",
     "react": "18.0.0",
     "react-circular-progressbar": "^2.0.4",
@@ -19,13 +22,13 @@
     "react-icons": "^4.3.1",
     "react-owl-carousel": "^2.3.3",
     "react-query": "^3.39.2",
+    "react-redux": "^8.0.5",
     "react-scroll": "^1.8.8",
     "react-spinners": "^0.11.0",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "eslint": "8.12.0",
-    "eslint-config-next": "12.1.4",
-    "mongoose": "^6.7.2"
+    "eslint-config-next": "12.1.4"
   }
 }
