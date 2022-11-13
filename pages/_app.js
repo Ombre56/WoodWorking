@@ -1,5 +1,7 @@
 import GlobalStyle from '../styles/GlobalStyle'
 import { QueryClientProvider, QueryClient } from 'react-query';
+import { store } from '../redux/store';
+import { Provider } from 'react-redux';
 
 // create a client
 const queryClient = new QueryClient();
@@ -7,8 +9,10 @@ const queryClient = new QueryClient();
 function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <GlobalStyle />
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </Provider>
     </QueryClientProvider>
   );
   

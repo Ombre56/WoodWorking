@@ -3,8 +3,12 @@ import React from 'react'
 import styled from 'styled-components';
 import { getProducts } from '../../../lib/helper';
 import { useQuery } from 'react-query';
+import { useSelector } from 'react-redux';
 
 export default function Tiles() {
+
+  const state = useSelector((state) => state.app.client.toggleForm);
+  console.log(state)
 
   const { isLoading, isError, data, error } = useQuery('product', getProducts);
   console.log(data)
