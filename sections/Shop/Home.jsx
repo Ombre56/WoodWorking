@@ -14,7 +14,7 @@ export default function Home() {
     <HomeSection>
       <Header />
       <Hero />
-      <Title>Nowe i popularne</Title>
+      <Title>Nasze produkty</Title>
       <UnderHeroSection>
         <GridTiles>
           <Tiles />
