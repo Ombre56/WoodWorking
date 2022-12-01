@@ -8,10 +8,8 @@ import { useSelector } from 'react-redux';
 export default function Tiles() {
 
   const state = useSelector((state) => state.app.client.toggleForm);
-  console.log(state)
 
   const { isLoading, isError, data, error } = useQuery('product', getProducts);
-  console.log(data)
 
   if (isLoading) {
     return <div>Produkt jest ładowany...</div>;

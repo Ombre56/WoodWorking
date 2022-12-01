@@ -48,16 +48,15 @@ export default function UpdateProductForm({ formId, formData, setFormData }) {
             onChange={setFormData}
           />
         </div>
-        <div className="input-type">
+        <InputFileContainer>
           <input 
-            type="text" 
+            type="file"
             name="image"
-            defaultValue={data.image}
-            placeholder='Link do zdjęcia'
-            required={true}
+            // defaultValue={data.image}
+            accept="image/png, image/jpeg"
             onChange={setFormData}
           />
-        </div>
+        </InputFileContainer>
         <div className="input-type">
           <textarea 
             name="description"
@@ -177,6 +176,34 @@ const FormContainer = styled.form`
   }
 `;
 
+const InputFileContainer = styled.div`
+  [type="file"] {
+    color: #878787;
+    background: none;
+    width: 300px;
+    padding-left: 0;
+  }
+  [type="file"]::-webkit-file-upload-button {
+    background: #B63E3B;
+    border: 2px solid #B63E3B;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    outline: none;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    transition: all 1s ease;
+  }
+
+  [type="file"]::-webkit-file-upload-button:hover {
+    background: #fff;
+    border: 1px solid #535353;
+    color: #000;
+  }
+`;
+
+
 const EditButton = styled.button`
   width: 100px;
   height: 20.54px;
@@ -189,4 +216,11 @@ const EditButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  text-transform: uppercase;
+  transition: all 1s ease;
+  &:hover{
+    background: #fff;
+    border: 1px solid #535353;
+    color: #000;
+  }
 `;

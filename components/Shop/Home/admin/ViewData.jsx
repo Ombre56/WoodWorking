@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image';
 import { deleteProduct, getProducts } from '../../../../lib/helper';
@@ -180,6 +180,7 @@ function DeleteComponent({deleteHandler, cancleHandler}) {
   )
 }
 
+// Delete Component
 const UpsideContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -218,9 +219,6 @@ const UpsideContainer = styled.div`
     }
   }
 `;
-
-// Delete Component
-
 
 const Container = styled.div`
   margin: 6.9375rem 12.875rem 0 7.875rem;
