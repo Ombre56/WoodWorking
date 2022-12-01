@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { BiPlus } from 'react-icons/bi'
 import { useQueryClient, useMutation, useQuery } from 'react-query'
 import styled from 'styled-components'
@@ -7,13 +7,17 @@ import Bug from './Bug'
 import Success from './Success'
 
 export default function AddProductForm({ formId, formData, setFormData }) {
-  const {isLoading, isError, data, error} = useQuery(['products', formId], () => getProduct(formId))
   const queryClient = useQueryClient()
+  const [selectedImage, setSelectedImage] = useState();
   const addMutation = useMutation(addProduct, {
     onSuccess: () => {
       queryClient.prefetchQuery('products', getProducts)
     }
   })
+
+  const handleChange = event => {
+    setSelectedImage(event.target.files[0]);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,11 +27,11 @@ export default function AddProductForm({ formId, formData, setFormData }) {
         console.log("Wypełnij dane!")
       )
     }
-    let { name, image, description, price, amount, status } = formData;
+    let { name, description, price, amount, status } = formData;
 
     const model = {
       name,
-      image,
+      
       description,
       price,
       amount,
@@ -35,6 +39,7 @@ export default function AddProductForm({ formId, formData, setFormData }) {
     };
 
     addMutation.mutate(model);
+    console.log(selectedImage)
   };
 
   if (Object.keys(formData).length < 0) return <Bug message={"Dane nie zostały dodane!"}></Bug>
@@ -45,7 +50,7 @@ export default function AddProductForm({ formId, formData, setFormData }) {
   return (
     <>
       <Line />
-      <FormContainer onSubmit={handleSubmit}>
+      <FormContainer method='post' onSubmit={handleSubmit}>
         <div className="input-type">
           <input
             type="text"
@@ -57,16 +62,16 @@ export default function AddProductForm({ formId, formData, setFormData }) {
             onChange={setFormData}
           />
         </div>
-        <div className="input-type">
+        <InputFileContainer>
           <input 
-            // type="file"
-            type="text"
-            placeholder='Link do zdjęcia'
+            type="file"
             name="image"
-            // accept="image/png, image/jpeg"
-            onChange={setFormData}
+            id='file'
+            accept="image/png, image/jpeg"
+            max-size="20"
+            onChange={handleChange}
           />
-        </div>
+        </InputFileContainer>
         <div className="input-type">
           <textarea 
             name="description"
@@ -183,6 +188,34 @@ const FormContainer = styled.form`
     }
   }
 `;
+
+const InputFileContainer = styled.div`
+  [type="file"] {
+    color: #878787;
+    background: none;
+    width: 300px;
+    padding-left: 0;
+  }
+  [type="file"]::-webkit-file-upload-button {
+    background: #07590F;
+    border: 2px solid #07590F;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    outline: none;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    transition: all 1s ease;
+  }
+
+  [type="file"]::-webkit-file-upload-button:hover {
+    background: #fff;
+    border: 2px solid #535353;
+    color: #000;
+  }
+`;
+
 const AddButton = styled.button`
   width: 100px;
   height: 20.54px;
@@ -195,4 +228,11 @@ const AddButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  text-transform: uppercase;
+  transition: all 1s ease;
+  &:hover{
+    background: #fff;
+    border: 1px solid #535353;
+    color: #000;
+  }
 `;

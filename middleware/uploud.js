@@ -3,7 +3,7 @@ const multer = require('multer');
 
 var storate = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'assets/uploud/')
+    cb(null, 'assets/uplouds/')
   },
   filename: function (req, file, cb) {
     let ext = path.extname(file.originalname)
@@ -12,7 +12,7 @@ var storate = multer.diskStorage({
 })
 
 var uploud = multer({
-  storage: storage,
+  storage: storate,
   fileFilter: function (req, file, callback) {
     if (
       file.mimetype == "image/png" ||

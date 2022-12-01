@@ -27,7 +27,9 @@ export default function Header() {
           <AiOutlineHeart />
           <span className="heart">0</span>
         </div>
-        <CgProfile />
+        <Link href="/sklep/login">
+          <CgProfile />
+        </Link>
       </Icons>
     </HeaderSection>
   );
