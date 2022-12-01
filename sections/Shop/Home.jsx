@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
 
+import Header from '../../components/Shop/Home/Header';
+import Hero from '../../components/Shop/Home/Hero';
 import Tiles from '../../components/Shop/Home/Tiles';
 
 import { MdOutlineCategory } from 'react-icons/md';
@@ -10,6 +12,8 @@ import { CgProfile } from 'react-icons/cg';
 export default function Home() {
   return (
     <HomeSection>
+      <Header />
+      <Hero />
       <Title>Nasze produkty</Title>
       <UnderHeroSection>
         <GridTiles>
