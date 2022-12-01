@@ -1,11 +1,10 @@
 import React from 'react'
-import Head from 'next/head';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import Home from '../../sections/Shop/Home';
+import ShopLayout from '../../components/Shop/Home/ShopLayout'
 
 export default function index() {
 return (
+<<<<<<< HEAD
     <>
       <Head>
         <title>♦ SKLEP STOLARSKI ♦</title>
@@ -22,5 +21,10 @@ return (
         </motion.div>
       </main>
     </>
+=======
+    <ShopLayout>
+      <Home />
+    </ShopLayout>
+>>>>>>> shop
   );
 };
