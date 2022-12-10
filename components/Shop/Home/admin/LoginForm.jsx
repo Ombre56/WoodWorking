@@ -51,7 +51,7 @@ export default function LoginForm({checkAdmin, setCheckAdmin}) {
         </FormGroup>
         <FormGroup>
           <input
-            type="text"
+            type="password"
             name="password"
             id="password"
             placeholder='Wpisz hasło...'

@@ -2,6 +2,10 @@ import { Schema, models, model } from 'mongoose';
 const bcrypt = require("bcryptjs")
 
 const userSchema = new Schema({
+  username: {
+    type: String,
+    index: { unique: true, sparse: true },
+  },
   email: {
     type: String,
     required: true,
@@ -10,6 +14,9 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  role: {
+    type: String,
   },
   address: {
     type: Array,

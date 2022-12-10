@@ -21,13 +21,13 @@ export default function Header() {
       <Icons>
         <div>
           <AiOutlineShoppingCart />
-          <span className="shop">0</span>
+          <span className="shop">1</span>
         </div>
         <div>
           <AiOutlineHeart />
           <span className="heart">0</span>
         </div>
-        <Link href="/sklep/login">
+        <Link href="/sklep/profile">
           <CgProfile />
         </Link>
       </Icons>

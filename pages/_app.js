@@ -2,20 +2,23 @@ import GlobalStyle from '../styles/GlobalStyle'
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { store } from '../redux/store';
 import { Provider } from 'react-redux';
+import { SessionProvider } from 'next-auth/react';
 
 // create a client
 const queryClient = new QueryClient();
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({
+    Component,
+    pageProps: { session, ...pageProps },
+  }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
-        <GlobalStyle />
-        <Component {...pageProps} />
+        <SessionProvider session={session}>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </SessionProvider>
       </Provider>
     </QueryClientProvider>
   );
-  
-}
-
-export default MyApp
+};

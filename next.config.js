@@ -17,9 +17,6 @@ const nextConfig = {
     );
     return config;
   },
-  env: {
-    MONGODB_URI: "mongodb+srv://admin:test123@cluster0.wwqbu8a.mongodb.net/?retryWrites=true&w=majority"
-  },
   images: {
     domains: ["localhost"],
   },

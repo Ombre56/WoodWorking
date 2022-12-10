@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components';
 import ShopLayout from '../../components/Shop/Home/ShopLayout';
-import RegisterForm from '../../components/Shop/RegisterForm';
+import LoginForm from '../../components/Shop/LoginForm';
 
 export default function login() {
   return (
     <ShopLayout>
       <FormContainer>
-        <RegisterForm />
+        <LoginForm />
       </FormContainer>
     </ShopLayout>
   )
