@@ -27,7 +27,7 @@ export async function getUser(req, res) {
     }
     res.status(404).send({ error: "User not Selected...!" });
   } catch (error) {
-    res.status(404).send({ error: "Cannot get the Product...!" });
+    res.status(404).send({ error: "Cannot get the User...!" });
   }
 }
 
