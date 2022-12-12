@@ -40,52 +40,55 @@ export default function ViewData() {
   }
   
   return (
-    <Container>
-      <UpsideContainer>
-        <div>
-          <ButtonAddNewProduct onClick={handleVisible}>
-            <span>Dodaj produkt</span>
-            <IoIosAddCircle size={15} />
-          </ButtonAddNewProduct>
-          {visible ? <Form /> : <></>}
-        </div>
-        <div>
-          {deleteId ? DeleteComponent({deleteHandler, cancleHandler}) : <></>}
-        </div>
-      </UpsideContainer>
-      <Table>
-        <thead>
-          <tr>
-            <th>
-              <span>Zdjęcie</span>
-            </th>
-            <th>
-              <span>Nazwa</span>
-            </th>
-            <th>
-              <span>Opis</span>
-            </th>
-            <th>
-              <span>Cena</span>
-            </th>
-            <th>
-              <span>Ilość</span>
-            </th>
-            <th>
-              <span>Status</span>
-            </th>
-            <th>
-              <span>Akcje</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-              data.map((obj, i) => <Tr {...obj} key={i} />)
-          }
-        </tbody>
-      </Table>
-    </Container>
+    <>
+      <TitleTable>Produkty</TitleTable>
+      <Container>
+        <UpsideContainer>
+          <div>
+            <ButtonAddNewProduct onClick={handleVisible}>
+              <span>Dodaj produkt</span>
+              <IoIosAddCircle size={15} />
+            </ButtonAddNewProduct>
+            {visible ? <Form /> : <></>}
+          </div>
+          <div>
+            {deleteId ? DeleteComponent({deleteHandler, cancleHandler}) : <></>}
+          </div>
+        </UpsideContainer>
+        <Table>
+          <thead>
+            <tr>
+              <th>
+                <span>Zdjęcie</span>
+              </th>
+              <th>
+                <span>Nazwa</span>
+              </th>
+              <th>
+                <span>Opis</span>
+              </th>
+              <th>
+                <span>Cena</span>
+              </th>
+              <th>
+                <span>Ilość</span>
+              </th>
+              <th>
+                <span>Status</span>
+              </th>
+              <th>
+                <span>Akcje</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+                data.map((obj, i) => <Tr {...obj} key={i} />)
+            }
+          </tbody>
+        </Table>
+      </Container>
+    </>
   )
 }
 
@@ -220,8 +223,20 @@ const UpsideContainer = styled.div`
   }
 `;
 
+const TitleTable = styled.h1`
+  color: #B63E3B;
+  font-size: 3rem;
+  text-align: center;
+  margin: 0;
+  padding: 2.25rem 0;
+  text-transform: uppercase;
+    @media screen and (max-width: 800px){
+      font-size: 2rem;
+    }
+`;
+
 const Container = styled.div`
-  margin: 6.9375rem 12.875rem 0 7.875rem;
+  margin: .625rem 12.875rem 0 7.875rem;
   overflow: auto;
   &::-webkit-scrollbar{
     height: 5px;
@@ -234,7 +249,7 @@ const Container = styled.div`
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   }
     @media screen and (max-width: 992px){
-      margin: 6.25rem .625rem;
+      margin: 0 .625rem .625rem .625rem;
     }
 `;
 

@@ -1,14 +1,11 @@
 import React from 'react'
+import Profile from '../../sections/Shop/Profile'
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import Home from '../../sections/Shop/Home';
-import {useSession} from 'next-auth/react'
 
-export default function index() {
-  const { data: session, status } = useSession();
-  console.log("session", session, status)
+export default function profile() {
   return (
-  <>
+    <>
       <Head>
         <title>♦ SKLEP STOLARSKI ♦</title>
         <meta name="description" content="SKlep stolarski" />
@@ -18,10 +15,10 @@ export default function index() {
       <main>
       <motion.div initial="hidden" animate="show">
         <section id="home">
-            <Home />
+            <Profile />
           </section>
         </motion.div>
       </main>
-  </>
-  );
-};
+    </>
+  )
+}

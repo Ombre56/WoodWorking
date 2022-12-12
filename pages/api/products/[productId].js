@@ -19,7 +19,11 @@ export default function handler(req, res) {
       break;
     default:
       res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
-      res.status(405).end(`Method ${method} Not Allowd`);
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader('Cache-Control', 'max-age=180000');
+      res.end(JSON.stringify(response));
+      res.status(405).send(`Method ${method} Not Allowd`);
       break;
   }
 }

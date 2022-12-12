@@ -1,8 +1,11 @@
-import Router from 'next/router';
-import React, { useReducer } from 'react'
+import { signIn } from 'next-auth/react';
+import React from 'react'
 import { FaUser } from 'react-icons/fa';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import styled from 'styled-components'
+import { getCsrfToken } from 'next-auth/react';
+import { useReducer } from 'react';
+import Router from 'next/router';
 
 const formReducer = (state, event) => {
   return {
@@ -11,75 +14,31 @@ const formReducer = (state, event) => {
   }
 }
 
-export default function RegisterForm() {
+export default function LoginForm() {
   const [formData, setFormData] = useReducer(formReducer, {})
 
   const handleSubmit = async (e) => {
-        e.preventDefault();
-    let { name, surname, email, password } = formData;
-    
-        if (!email || !email.includes('@') || !password) {
-            alert('Invalid details');
-            return;
-        }
-        const res = await fetch('/api/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: name,
-                surname: surname,
-                email: email,
-                password: password,
-            }),
-        });
-    const data = await res.json();
-    console.log(data)
-    Router.push('/sklep')
-  }
+    e.preventDefault();
 
-  if (Object.keys(formData).length < 0) return <Bug message={"Dane nie zostały dodane!"}></Bug>
+    let { email, password } = formData;
+
+    const res = await signIn("credentials", {
+      email: email,
+      password: password,
+      redirect: false
+    });
+
+    console.log(res)
+
+    Router.push('/sklep')
+  };
 
   return (
     <FormContainer>
-      <FormTitle>Rejestracja</FormTitle>
-        <Form action='/api/register' method='post' onSubmit={handleSubmit}>
+      <FormTitle>Logowanie</FormTitle>
+      <Form method='POST' onSubmit={handleSubmit}>
+        <input type="hidden" name="csrfToken" defaultValue={getCsrfToken} />
           <Inputs>
-              <InputContainer>
-                <div className='left-side'>
-                  <FaUser />
-                  <LineBorder />
-                </div>
-                <div className='right-side'>
-                  <input 
-                    type="text" 
-                    name="name" 
-                    id="name"
-                    required
-                    maxLength={20}
-                    placeholder='Imię*'
-                    onChange={setFormData}
-                  />
-                </div>
-              </InputContainer>
-              <InputContainer>
-                <div className='left-side'>
-                  <FaUser />
-                  <LineBorder />
-                </div>
-                <div className='right-side'>
-                  <input 
-                    type="text" 
-                    name="surname" 
-                    id="surname"
-                    required
-                    maxLength={20}
-                    placeholder='Nazwisko*'
-                    onChange={setFormData}
-                  />
-                </div>
-              </InputContainer>
               <InputContainer>
                 <div className='left-side'>
                   <FaUser />
@@ -93,7 +52,7 @@ export default function RegisterForm() {
                     // pattern="[a-z0-9._%+-]"
                     required
                     maxLength={20}
-                    placeholder='Adres e-mail*'
+                    placeholder='e-mail'
                     onChange={setFormData}
                   />
                 </div>
@@ -108,22 +67,17 @@ export default function RegisterForm() {
                     type="password" 
                     name="password"
                     required
-                    id="password" 
-                    placeholder='Hasło*'
+                    id="password"
+                    placeholder='hasło'
                     onChange={setFormData}
                   />
                 </div>
               </InputContainer>
           </Inputs>
 
-          <CheckBox>
-            <input type="checkbox" required name="accept_rules" id="accept_rules" />
-            <p>Zapoznałem/am się i akceptuję <a href="">regulamin*</a></p>
-          </CheckBox>
-
-          <RegisterButton type='submit'>
-            <p>Zarejestruj</p>
-          </RegisterButton>
+          <LoginButton type='submit'>
+            <p>Zaloguj</p>
+          </LoginButton>
         </Form>
     </FormContainer>
   )
@@ -181,17 +135,16 @@ const InputContainer = styled.div`
   }
   .right-side{
     flex-basis: 80%;
-    color: rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.2)
   }
   input{
     border: none;
     width: 100%;
-    padding: .8125rem 0 .8125rem 5px;
+    padding: 10px 0;
     &::placeholder{
       font-family: 'Akshar';
       font-weight: 700;
       font-size: 24px;
-      padding-top: 5px;
       line-height: 26px;
       color: rgba(0, 0, 0, 0.2);
     }
@@ -209,23 +162,7 @@ const LineBorder = styled.div`
   transform: rotate(90deg);
 `;
 
-const CheckBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  p{
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 15px;
-    a{
-      text-decoration: underline;
-      font-weight: bold;
-    }
-  }
-`;
-
-const RegisterButton = styled.button`
+const LoginButton = styled.button`
   width: 168px;
   height: 48px;
   display: flex;
@@ -233,6 +170,7 @@ const RegisterButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 13px 33px;
+  margin-top: 1.25rem;
   gap: 10px;
   background: #F17900;
   border-radius: 24.5px;

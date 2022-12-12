@@ -53,6 +53,7 @@ const Tile = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
     @media screen and (min-width: 992px){
       width: 14.1875rem;
       height: 18.625rem;

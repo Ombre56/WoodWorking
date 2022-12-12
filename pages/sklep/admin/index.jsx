@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import styled from 'styled-components'
 import LoginForm from '../../../components/Shop/Home/admin/LoginForm';
 import ViewData from '../../../components/Shop/Home/admin/ViewData';
+import ViewUsers from '../../../components/Shop/Home/admin/ViewUsers';
 
 export default function index() {
   const [checkAdmin, setCheckAdmin] = useState("");
@@ -19,6 +20,7 @@ export default function index() {
           <PanelAdmin>
             <Header>Panel administratora</Header>
             <ViewData />
+            <ViewUsers />
           </PanelAdmin>
           :
           <FormAdmin>
@@ -27,10 +29,11 @@ export default function index() {
             </div>
           </FormAdmin>
         }
-          <PanelAdmin>
+          {/* <PanelAdmin>
             <Header>Panel administratora</Header>
             <ViewData />
-          </PanelAdmin>
+            <ViewUsers />
+          </PanelAdmin> */}
       </main>
     </div>
   )
@@ -38,10 +41,9 @@ export default function index() {
 
 const PanelAdmin = styled.section`
   width: 100%;
-  height: 100vh;
+  max-height: 100vh;
   background-color: #F9F9F9;
 `;
-
 
 const FormAdmin = styled.section`
   width: 100%;
