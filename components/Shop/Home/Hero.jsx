@@ -28,19 +28,14 @@ export default function Hero() {
       >
         <HeroTitle variants={fromLeftAnimation}>
           <Image src='/assets/images/hand-saw.svg' alt='Hand Saw' width='29' height='29'/>
-            Lorem ipsum
+            Sklep stolarski
           </HeroTitle>
         <HeroSubTitle variants={fromRightAnimation}>
           <Line></Line>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis</p>
+          <p>Nasze produkty są wykonane z największą starannością.</p>
         </HeroSubTitle>
-        <HeroButton>
-          <Link href='/sklep/kategorie'>
-            <span>Kup teraz</span>
-          </Link>
-        </HeroButton>
       </HeroTextContainer>
-      <svg className='wave' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FFF" fillOpacity="1" height='100px' d="M0,160L120,176C240,192,480,224,720,224C960,224,1200,192,1320,176L1440,160L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path></svg>
+      <svg className='wave' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FFF" fillOpacity="1" height='50px' d="M0,160L120,176C240,192,480,224,720,224C960,224,1200,192,1320,176L1440,160L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path></svg>
     </HeroSection>
   )
 }
@@ -54,7 +49,7 @@ const HeroSection = styled.section`
     bottom: -10px;
     left: 0;
     @media screen and (min-width: 992px){
-      bottom: -50px;
+      bottom: -25px;
     }
   }
 `;
@@ -68,7 +63,7 @@ const BannerImage = styled.div`
     z-index: -1;
   }
     @media screen and (min-width: 992px){
-      min-height: 70vh;
+      min-height: 60vh;
     }
 `;
 
@@ -88,7 +83,7 @@ const HeroTextContainer = styled(motion.section)`
 const HeroTitle = styled(motion.h1)`
   font-family: 'Roboto';
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.75rem;
   line-height: 2.75rem;
   margin: 0;
   display: flex;
@@ -125,30 +120,4 @@ const HeroSubTitle = styled(motion.div)`
       line-height: 1.25rem;
       }
   }
-`;
-
-const HeroButton = styled.div`
-  width: 5.5625rem;
-  height: 1.0625rem;
-  background: #F17900;
-  border-radius: 8.5px;
-  color: #FFFFFF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  span{
-    font-size: .5rem;
-    font-weight: 400;
-    line-height: .6875rem;
-      @media screen and (min-width: 992px){
-        font-size: 1.25rem;
-        line-height: 1rem;
-      }
-  }
-    @media screen and (min-width: 992px){
-      /* width: 8.125rem;
-      height: 2.1875rem; */
-      display: none;
-    }
 `;
