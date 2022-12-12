@@ -16,7 +16,8 @@ export default function RegisterForm() {
 
   const handleSubmit = async (e) => {
         e.preventDefault();
-        let { email, password } = formData;
+    let { name, surname, email, password } = formData;
+    
         if (!email || !email.includes('@') || !password) {
             alert('Invalid details');
             return;
@@ -27,6 +28,8 @@ export default function RegisterForm() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
+                name: name,
+                surname: surname,
                 email: email,
                 password: password,
             }),
@@ -50,13 +53,47 @@ export default function RegisterForm() {
                 </div>
                 <div className='right-side'>
                   <input 
+                    type="text" 
+                    name="name" 
+                    id="name"
+                    required
+                    maxLength={20}
+                    placeholder='Imię*'
+                    onChange={setFormData}
+                  />
+                </div>
+              </InputContainer>
+              <InputContainer>
+                <div className='left-side'>
+                  <FaUser />
+                  <LineBorder />
+                </div>
+                <div className='right-side'>
+                  <input 
+                    type="text" 
+                    name="surname" 
+                    id="surname"
+                    required
+                    maxLength={20}
+                    placeholder='Nazwisko*'
+                    onChange={setFormData}
+                  />
+                </div>
+              </InputContainer>
+              <InputContainer>
+                <div className='left-side'>
+                  <FaUser />
+                  <LineBorder />
+                </div>
+                <div className='right-side'>
+                  <input 
                     type="email" 
                     name="email" 
                     id="email"
                     // pattern="[a-z0-9._%+-]"
                     required
                     maxLength={20}
-                    placeholder='e-mail'
+                    placeholder='Adres e-mail*'
                     onChange={setFormData}
                   />
                 </div>
@@ -72,7 +109,7 @@ export default function RegisterForm() {
                     name="password"
                     required
                     id="password" 
-                    placeholder='hasło'
+                    placeholder='Hasło*'
                     onChange={setFormData}
                   />
                 </div>
@@ -144,16 +181,17 @@ const InputContainer = styled.div`
   }
   .right-side{
     flex-basis: 80%;
-    color: rgba(0, 0, 0, 0.2)
+    color: rgba(0, 0, 0, 0.2);
   }
   input{
     border: none;
     width: 100%;
-    padding: 10px 0;
+    padding: .8125rem 0 .8125rem 5px;
     &::placeholder{
       font-family: 'Akshar';
       font-weight: 700;
       font-size: 24px;
+      padding-top: 5px;
       line-height: 26px;
       color: rgba(0, 0, 0, 0.2);
     }
