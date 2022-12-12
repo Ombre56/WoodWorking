@@ -8,7 +8,7 @@ export default NextAuth({
       CredentialsProvider({
           name: "Credentials",
         credentials: {
-          email: { label: "Username", type: "email", placeholder: "jsmith" },
+          email: { label: "Email", type: "email" },
           password: { label: "Password", type: "password" },
         },
         async authorize(credentials, req) {
@@ -46,13 +46,14 @@ export default NextAuth({
     jwt: true,
     maxAge: 30 * 24 * 60 * 60 // 30 days
   },
-  // callbacks: {
-  //   jwt(params) {
-  //     if (params.user) {
-        
-  //     }
-  //   }
-  // }
+  callbacks: {
+    async session({ session, token, user }) {
+      session.accessToken = token.accessToken
+      session.user.id = token.id
+      
+      return session
+    }
+  },
   pages: {
     signIn: '/sklep/login'
   }
