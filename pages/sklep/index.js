@@ -5,8 +5,8 @@ import Home from '../../sections/Shop/Home';
 import {useSession} from 'next-auth/react'
 
 export default function index() {
-  const { data: session } = useSession();
-  console.log("session", session)
+  const { data: session, status } = useSession();
+  console.log("session", session, status)
   return (
   <>
       <Head>
