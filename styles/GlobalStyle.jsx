@@ -24,6 +24,10 @@ a {
   text-decoration: none;
 }
 
+ul{
+  list-style: none;
+}
+
 *,*::after,*::before{
   box-sizing: border-box;
 }
