@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { BiPlus } from 'react-icons/bi'
 import { useQueryClient, useMutation, useQuery } from 'react-query'
@@ -15,11 +16,11 @@ export default function AddProductForm({ formId, formData, setFormData }) {
     }
   })
 
-  const handleChange = event => {
-    setSelectedImage(event.target.files[0]);
+  const handleChange = e => {
+    setSelectedImage(e.target.files[0]);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (Object.keys(formData).length === 0) {
@@ -29,17 +30,29 @@ export default function AddProductForm({ formId, formData, setFormData }) {
     }
     let { name, description, price, amount, status } = formData;
 
-    const model = {
-      name,
-      
-      description,
-      price,
-      amount,
-      status : status ?? "Dostępny",
-    };
+    const data = new FormData();
+    data.append("file", selectedImage);
+    data.append("upload_preset", "uploads");
+    try {
+      const uploadRes = await axios.post(
+        "https://api.cloudinary.com/v1_1/dmip4z9x4/image/upload",
+        data
+      );
+      const { url } = uploadRes.data;
+      const model = {
+        name,
+        image: url,
+        description,
+        price,
+        amount,
+        status : status ?? "Dostępny",
+      };
 
-    addMutation.mutate(model);
-    console.log(selectedImage)
+      console.log(uploadRes.data)
+      addMutation.mutate(model);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   if (Object.keys(formData).length < 0) return <Bug message={"Dane nie zostały dodane!"}></Bug>

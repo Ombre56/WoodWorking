@@ -47,10 +47,7 @@ const userSchema = new Schema({
     default: 'Użytkownik',
   },
   address: [addressSchema],
-  orders: {
-    type: Schema.Types.ObjectId,
-    ref: 'products'
-  },
+  orders: [],
 }, {
   timestamps: true
 });
