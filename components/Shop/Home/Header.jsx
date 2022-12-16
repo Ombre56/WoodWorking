@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
 import Link from 'next/link';
+import Navigation from './Navigation';
 
 export default function Header() {
   return (
@@ -30,6 +31,9 @@ export default function Header() {
         <Link href="/sklep/profile">
           <CgProfile />
         </Link>
+        <NavigationImg>
+          <Navigation />
+        </NavigationImg>
       </Icons>
     </HeaderSection>
   );
@@ -76,7 +80,7 @@ const NavigationContainer = styled.div`
 `;
 
 const Icons = styled.div`
-  width: 5.625rem;
+  width: 9.375rem;
   color: #FFFFFF;
   display: flex;
   justify-content: space-between;
@@ -139,4 +143,13 @@ const Icons = styled.div`
         font-size: 1rem;
       }
     }
+`;
+
+const NavigationImg = styled.div`
+  width: 30px;
+  margin-bottom: 10px;
+  color: #FFFFFF;
+  @media screen and (min-width: 992px){
+    display: none;
+  }
 `;
