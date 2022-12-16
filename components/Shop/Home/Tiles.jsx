@@ -4,10 +4,9 @@ import styled from 'styled-components';
 import { getProducts } from '../../../lib/helper';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 
 export default function Tiles() {
-
-  const state = useSelector((state) => state.app.client.toggleForm);
 
   const { isLoading, isError, data, error } = useQuery('product', getProducts);
 
@@ -23,20 +22,24 @@ export default function Tiles() {
       {data.map((product) =>
         <Tile>
             <ImageContainer>
-              <Image
-                src={product.image}
-                alt='TileImage'
-                width='90'
-                height='62'
-                layout='responsive'
-                priority
-              />
+              <Link href={`/sklep/product/${product._id}`} passHref>
+                <Image
+                  src={product.image}
+                  alt='TileImage'
+                  width='90'
+                  height='62'
+                  layout='responsive'
+                  priority
+                />
+              </Link>
             </ImageContainer>
             <Title>{product.name}</Title>
-            <Price>{product.price} zł</Price>
+          <Price>{product.price} zł</Price>
+          <Link href={`/sklep/product/${product._id}`} passHref>
             <Button>
               <span>Sprawdź</span>
-            </Button>      
+          </Button>
+          </Link>
         </Tile>
         )}
     </>
