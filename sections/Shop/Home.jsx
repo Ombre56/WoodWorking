@@ -1,47 +1,20 @@
 import React from 'react'
 import styled from 'styled-components';
-
-import Header from '../../components/Shop/Home/Header';
-import Hero from '../../components/Shop/Home/Hero';
 import Tiles from '../../components/Shop/Home/Tiles';
-
-import { MdOutlineCategory } from 'react-icons/md';
-import { FaHome } from 'react-icons/fa';
-import { CgProfile } from 'react-icons/cg';
+import ShopLayout from '../../components/Shop/Home/ShopLayout';
 
 export default function Home() {
   return (
-    <HomeSection>
-      <Header />
-      <Hero />
+    <ShopLayout>
       <Title>Nasze produkty</Title>
       <UnderHeroSection>
         <GridTiles>
           <Tiles />
         </GridTiles>
-        <Navigation>
-          <CategoryAndProfile>
-            <MdOutlineCategory />
-            <span>Kategorie</span>
-          </CategoryAndProfile>
-          <HomeNav>
-            <FaHome />
-            <span>Strona główna</span>
-          </HomeNav>
-          <CategoryAndProfile>
-            <CgProfile />
-            <span>Profil</span>
-          </CategoryAndProfile>
-        </Navigation>
       </UnderHeroSection>
-    </HomeSection>
+    </ShopLayout>
   )
 }
-
-const HomeSection = styled.section`
-  width: 100%;
-  min-height: 100vh;
-`;
 
 const Title = styled.h2`
   font-weight: 600;
