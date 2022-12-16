@@ -10,7 +10,7 @@ export async function getProducts(req, res) {
     if (!products) {
       return res.status(404).send({error: "Data not Found"})
     }
-    res.status(200).send(products)
+    return res.status(200).send(products)
   } catch (error) {
     res.status(404).send({error: "Error While Fetching Data"})
   }
@@ -23,7 +23,7 @@ export async function getProduct(req, res) {
 
     if (productId) {
       const product = await Products.findById(productId);
-      res.status(200).send(product)
+      return res.status(200).send(product)
     }
     res.status(404).send({ error: "Product not Selected...!" });
   } catch (error) {
@@ -55,7 +55,7 @@ export async function putProduct(req, res) {
 
     if (productId && formData) {
       const product = await Products.findByIdAndUpdate(productId, formData);
-      res.status(200).send(product)
+      return res.status(200).send(product)
     }
     res.status(400).send({error: "Product Not Selected...!"})
   } catch (error) {
