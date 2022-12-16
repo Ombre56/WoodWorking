@@ -20,7 +20,7 @@ export default function ViewUsers() {
           <thead>
             <tr>
               <th>
-                <span>Nazwa</span>
+                <span>Imię i Nazwisko</span>
               </th>
               <th>
                 <span>Email</span>
@@ -44,12 +44,12 @@ export default function ViewUsers() {
   )
 }
 
-function Tr({ username, email, role, address }) {  
+function Tr({ name, surname, email, role, address }) {  
   return (
     <tr>
       <td>
         <span>
-          {username}
+          {name} {surname}
         </span>
       </td>
       <TableDescription>
