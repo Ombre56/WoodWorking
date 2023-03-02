@@ -65,6 +65,9 @@ export default function ViewData() {
                 <span>Nazwa</span>
               </th>
               <th>
+                <span>Kategoria</span>
+              </th>
+              <th>
                 <span>Opis</span>
               </th>
               <th>
@@ -92,7 +95,7 @@ export default function ViewData() {
   )
 }
 
-function Tr({ _id, name, image, description, price, amount, status }) {
+function Tr({ _id, name, category, image, description, price, amount, status }) {
   const visible = useSelector((state) => state.app.client.toggleForm)
   const dispatch = useDispatch()
 
@@ -129,6 +132,11 @@ function Tr({ _id, name, image, description, price, amount, status }) {
       <td style={{width: '150px', fontWeight: 'bold'}}>
         <span>
           {name}
+        </span>
+      </td>
+      <td style={{width: '150px', fontWeight: 'bold'}}>
+        <span>
+          {category}
         </span>
       </td>
       <TableDescription>
