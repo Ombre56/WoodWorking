@@ -3,8 +3,21 @@ import React from 'react'
 import styled from 'styled-components'
 import ShopLayout from './ShopLayout'
 import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../../redux/cartSlice';
+import { useState } from 'react';
 
-export default function ProductDetails({product}) {
+export default function ProductDetails({ product }) {
+  const [price, setPrice] = useState(product.price);
+  const [name, setName] = useState(product.name);
+  const [image, setImage] = useState(product.image);
+  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(addProduct({ ...product, price, quantity, name, image }));
+  }
+
   return (
     <ShopLayout>
       <Container>
@@ -29,7 +42,11 @@ export default function ProductDetails({product}) {
               <div className='status red'>✖ {product.status}</div>}
             </ul>
             <ButtonContainer>
-              <div className='addCart'>
+              <div
+                className='addCart'
+                onClick={handleClick}
+                onChange={(e) => setQuantity(e.target.value)}
+              >
                 Dodaj do koszyka
                 <AiOutlineShoppingCart />
               </div>
