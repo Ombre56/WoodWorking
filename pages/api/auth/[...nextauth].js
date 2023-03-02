@@ -52,6 +52,26 @@ export default NextAuth({
       session.user.id = token.id
       
       return session
+    },
+    async signIn({ user, account, profile, email, credentials }) {
+      const isAllowedToSignIn = true
+      if (isAllowedToSignIn) {
+        return true
+      } else {
+        return false
+      }
+    },
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith("/sklep")) return `${baseUrl}${url}`
+      else if (new URL(url).origin === baseUrl) return url
+      return baseUrl
+    },
+    async jwt({ token, account, user }) {
+      if (account) {
+        token.accessToken = account.access_token
+        token.id = user.id
+      }
+      return token
     }
   },
   pages: {
