@@ -28,7 +28,7 @@ export const getServerSideProps = async ({ params }) => {
   const BASE_URL = process.env.BASE_URL;
 
   const res = await axios.get(
-    `${BASE_URL}api/products${params.id}`
+    `${BASE_URL}/api/products/${params.id}`
   );
   return {
     props: {
