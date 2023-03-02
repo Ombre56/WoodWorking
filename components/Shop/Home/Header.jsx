@@ -5,8 +5,10 @@ import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
 import Link from 'next/link';
 import Navigation from './Navigation';
+import { useSelector } from 'react-redux';
 
 export default function Header() {
+  const quantity = useSelector((state) => state.cart.quantity)
   return (
     <HeaderSection>
       <ImageContainer>
@@ -14,16 +16,18 @@ export default function Header() {
       </ImageContainer>
       <NavigationContainer>
         <Link href="/sklep">Strona Główna</Link>
-        <Link href="/sklep/stoly">Stoły</Link>
-        <Link href="/sklep/krzesla">Krzesła</Link>
-        <Link href="/sklep/kuchenne">Kuchenne</Link>
-        <Link href="/sklep/nazewnatrz">Na zewnątrz</Link>
+        <Link href="/sklep/category/stoly">Stoły</Link>
+        <Link href="/sklep/category/krzesla">Krzesła</Link>
+        <Link href="/sklep/category/kuchenne">Kuchenne</Link>
+        <Link href="/sklep/category/nazewnatrz">Na zewnątrz</Link>
       </NavigationContainer>
       <Icons>
-        <div>
-          <AiOutlineShoppingCart />
-          <span className="shop">1</span>
-        </div>
+        <Link href="/sklep/cart" passHref>
+          <div>
+            <AiOutlineShoppingCart />
+            <span className="shop">{quantity}</span>
+          </div>
+        </Link>
         <div>
           <AiOutlineHeart />
           <span className="heart">0</span>
