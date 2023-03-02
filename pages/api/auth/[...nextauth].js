@@ -5,7 +5,8 @@ import { MongoClient } from 'mongodb';
 
 export default NextAuth({
     providers: [
-      CredentialsProvider({
+    CredentialsProvider({
+          id: "username-login",
           name: "Credentials",
         credentials: {
           email: { label: "Email", type: "email" },
