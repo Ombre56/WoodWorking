@@ -47,7 +47,6 @@ const userSchema = new Schema({
     default: 'Użytkownik',
   },
   address: [addressSchema],
-  orders: [],
 }, {
   timestamps: true
 });
