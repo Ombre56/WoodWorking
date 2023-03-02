@@ -28,7 +28,7 @@ export default function AddProductForm({ formId, formData, setFormData }) {
         console.log("Wypełnij dane!")
       )
     }
-    let { name, description, price, amount, status } = formData;
+    let { name, description, price, amount, category, status } = formData;
 
     const data = new FormData();
     data.append("file", selectedImage);
@@ -45,6 +45,7 @@ export default function AddProductForm({ formId, formData, setFormData }) {
         description,
         price,
         amount,
+        category,
         status : status ?? "Dostępny",
       };
 
@@ -92,6 +93,15 @@ export default function AddProductForm({ formId, formData, setFormData }) {
             required={true}
             onChange={setFormData}
           />
+          <select className='select-category' name="category" onChange={setFormData} required={true}>
+            <option value="none" selected disabled hidden>
+              Wybierz kategorie
+            </option>
+            <option value="Stoły">Stoły</option>
+            <option value="Krzesła">Krzesła</option>
+            <option value="Kuchenne">Kuchenne</option>
+            <option value="NaZewnątrz">Na zewnątrz</option>
+          </select>
         </div>
         <div className="inputs-numbers">
           <input 

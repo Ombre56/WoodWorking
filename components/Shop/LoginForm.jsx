@@ -6,6 +6,8 @@ import styled from 'styled-components'
 import { getCsrfToken } from 'next-auth/react';
 import { useReducer } from 'react';
 import Router from 'next/router';
+import { useState } from 'react';
+import Link from 'next/link';
 
 const formReducer = (state, event) => {
   return {
@@ -14,30 +16,43 @@ const formReducer = (state, event) => {
   }
 }
 
-export default function LoginForm() {
+export default function LoginForm({ csrfToken }) {
   const [formData, setFormData] = useReducer(formReducer, {})
+  const [pageState, setPageState] = useState({
+    error: '',
+    processing: false,
+  })
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     let { email, password } = formData;
 
+    setPageState(old => ({ ...old, processing: true, error: '' }));
+    
     const res = await signIn("credentials", {
       email: email,
       password: password,
-      redirect: false
+      redirect: true
+    }).then(response => {
+      console.log(response)
+      if (response.ok) {
+        Router.push('/sklep')
+      } else {
+        setPageState(old => ({...old, processing: false, error: response.error}))
+      }
+    }).catch(error => {
+      console.log(error)
+      setPageState(old => ({ ...old, processing: false, error: error.message ??  "Coś poszło nie tak!"}));
     });
 
-    console.log(res)
-
-    Router.push('/sklep')
   };
 
   return (
     <FormContainer>
       <FormTitle>Logowanie</FormTitle>
-      <Form method='POST' onSubmit={handleSubmit}>
-        <input type="hidden" name="csrfToken" defaultValue={getCsrfToken} />
+      <Form method='POST' onSubmit={handleSubmit} action="/api/auth/callback/credentials">
+        <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
           <Inputs>
               <InputContainer>
                 <div className='left-side'>
@@ -74,13 +89,27 @@ export default function LoginForm() {
                 </div>
               </InputContainer>
           </Inputs>
-
-          <LoginButton type='submit'>
+          {
+            pageState.error !== '' &&
+              <Error>
+                <p>{pageState.error}</p>
+              </Error>
+            }
+          <LoginButton type='submit' disabled={pageState.processing}>
             <p>Zaloguj</p>
           </LoginButton>
-        </Form>
+      </Form>
+      <Info>Nie masz konta? <Link href="/sklep/register">Zarejestruj się!</Link></Info>
     </FormContainer>
   )
+}
+
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      csrfToken: await getCsrfToken(context),
+    },
+  }
 }
 
 const FormContainer = styled.div`
@@ -181,5 +210,33 @@ const LoginButton = styled.button`
     font-size: 1.25rem;
     line-height: 1.375rem;
     color: #FFFFFF;
+  }
+`;
+
+const Error = styled.div`
+  margin-top: 1.3125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+  width: 448px;
+  height: 35px;
+  background: #B63E3B;
+  border-radius: 6px;
+  p{
+    margin: 0;
+    font-family: 'Akshar';
+    font-weight: 700;
+    font-size: 15px;
+  }
+`;
+
+const Info = styled.p`
+  font-family: 'Akshar';
+  font-size: 1.125rem;
+  font-weight: 700;
+  a{
+    text-decoration-line: underline;
+    color: #F17900;
   }
 `;

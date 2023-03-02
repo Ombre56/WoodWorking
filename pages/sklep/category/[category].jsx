@@ -1,10 +1,9 @@
 import axios from 'axios';
 import Head from 'next/head';
 import React from 'react'
-import ProductDetails from '../../../components/Shop/Home/ProductDetails';
 import { motion } from 'framer-motion';
 
-export default function Product({product}) {
+export default function Category({category}) {
   return (
     <>
       <Head>
@@ -15,8 +14,8 @@ export default function Product({product}) {
 
       <main>
       <motion.div initial="hidden" animate="show">
-        <section id="home">
-            <ProductDetails product={product} />
+          <section id="home">
+            {category}
           </section>
         </motion.div>
       </main>

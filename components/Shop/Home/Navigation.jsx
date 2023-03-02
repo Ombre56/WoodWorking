@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { Link } from 'react-scroll';
+// import { Link } from 'react-scroll';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaTimes } from 'react-icons/fa';
+import Link from "next/link";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,19 +53,19 @@ export default function Navigation() {
             onClick={() => { setIsOpen(!isOpen), setToggleNavbar(!toggleNavbar)}}
           >Strona główna</NavLink>
           <NavLink
-            href="/sklep/stoly"
+            href="/sklep/category/stoly"
             onClick={() => { setIsOpen(!isOpen), setToggleNavbar(!toggleNavbar)}}
           >Stoły</NavLink>
           <NavLink
-            href="/sklep/krzesla"
+            href="/sklep/category/krzesla"
             onClick={() => { setIsOpen(!isOpen), setToggleNavbar(!toggleNavbar)}}
           >Krzesła</NavLink>
           <NavLink
-            href="/sklep/kuchenne"
+            href="/sklep/category/kuchenne"
             onClick={() => { setIsOpen(!isOpen), setToggleNavbar(!toggleNavbar)}}
           >Kuchenne</NavLink>
           <NavLink
-            href="/sklep/nazewnatrz"
+            href="/sklep/category/naZewnatrz"
             onClick={() => { setIsOpen(!isOpen), setToggleNavbar(!toggleNavbar)}}
           >Na zewnątrz</NavLink>
         </LinksContainer>
@@ -101,17 +102,16 @@ const LinksContainer = styled(motion.div)`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  a{
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    text-shadow: 4px 7px 7px rgba(66, 68, 90, 1);
+  }
 `;
 
 const NavLink = styled(Link)`
   padding: 10px 0;
-  font-size: 2.5rem;
   position: relative;
-  text-transform: uppercase;
-  text-shadow: 4px 7px 7px rgba(66, 68, 90, 1);
-    @media screen and (max-width: 800px){
-          font-size: 1.875rem;
-    }
 `;
 
 const SvgBox = styled(motion.div)`

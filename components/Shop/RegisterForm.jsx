@@ -1,5 +1,6 @@
 import Router from 'next/router';
 import React, { useReducer } from 'react'
+import { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import styled from 'styled-components'
@@ -13,30 +14,47 @@ const formReducer = (state, event) => {
 
 export default function RegisterForm() {
   const [formData, setFormData] = useReducer(formReducer, {})
+  const [pageState, setPageState] = useState({
+    error: '',
+    // processing: false,
+  })
 
   const handleSubmit = async (e) => {
-        e.preventDefault();
+    e.preventDefault();
     let { name, surname, email, password } = formData;
     
-        if (!email || !email.includes('@') || !password) {
-            alert('Invalid details');
-            return;
-        }
-        const res = await fetch('/api/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: name,
-                surname: surname,
-                email: email,
-                password: password,
-            }),
-        });
+    if (!email || !email.includes('@') || !password) {
+        alert('Invalid details');
+        return;
+    }
+    setPageState(old => ({ ...old, processing: true, error: '' }));
+    const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: name,
+            surname: surname,
+            email: email,
+            password: password,
+        }),
+    })
+    //   .then(response => {
+    //   console.log(response)
+    //   if (response.ok) {
+    //     // Router.push('/sklep')
+    //   } else {
+    //     setPageState(old => ({...old, processing: false, error: response.error}))
+    //   }
+    // }).catch(error => {
+    //   console.log(error)
+    //   setPageState(old => ({ ...old, processing: false, error: error.message ??  "Coś poszło nie tak!"}));
+    // });
+
     const data = await res.json();
     console.log(data)
-    Router.push('/sklep')
+    console.log(res.message)
   }
 
   if (Object.keys(formData).length < 0) return <Bug message={"Dane nie zostały dodane!"}></Bug>
@@ -114,7 +132,13 @@ export default function RegisterForm() {
                   />
                 </div>
               </InputContainer>
-          </Inputs>
+        </Inputs>
+          {
+            pageState.error !== '' &&
+              <Error>
+                <p>{pageState.error}</p>
+              </Error>
+          }
 
           <CheckBox>
             <input type="checkbox" required name="accept_rules" id="accept_rules" />
@@ -243,5 +267,23 @@ const RegisterButton = styled.button`
     font-size: 1.25rem;
     line-height: 1.375rem;
     color: #FFFFFF;
+  }
+`;
+
+const Error = styled.div`
+  margin-top: 1.3125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+  width: 448px;
+  height: 35px;
+  background: #B63E3B;
+  border-radius: 6px;
+  p{
+    margin: 0;
+    font-family: 'Akshar';
+    font-weight: 700;
+    font-size: 15px;
   }
 `;
