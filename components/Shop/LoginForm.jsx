@@ -30,7 +30,7 @@ export default function LoginForm({ csrfToken }) {
 
     setPageState(old => ({ ...old, processing: true, error: '' }));
     
-    const res = await signIn("credentials", {
+    const res = await signIn("username-login", {
       email: email,
       password: password,
       redirect: true
